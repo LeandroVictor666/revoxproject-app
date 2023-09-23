@@ -27,7 +27,12 @@ Nesse projeto eu pretendo utilizar no front-end o ReactJs, React-Router-Dom, ent
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 # Como instalar o projeto
-(Tenha o Node + NPM instalado na sua maquina)
+---
+#### ***(Tenha o Node + NPM instalado na sua maquina)***
+### ***https://nodejs.org/en***
+
+---
+
 - 1. Primeiro faça o git clone ou apenas faça o download do projeto
 - 2. Rode o comando 'npm run install' no seu terminal
 - 3.  após ter executado o comando, execute o comando 'npm run dev', e o projeto estará rodando em modo desenvolvimento na sua maquina, só acessar a url local que o vite te apresentou no terminal! :)
