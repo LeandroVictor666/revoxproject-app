@@ -1,11 +1,11 @@
 import * as ReactRouter from "react-router-dom";
-
+import HomePage from "../Views/Home/HomePage";
 
 const AppRoutes = ReactRouter.createBrowserRouter([
-    {
-        path: '/',
-        element: <div><p>First Route With React-Router</p></div>
-    }
+  {
+    path: "/",
+    element: HomePage(),
+  },
 ]);
 
-export default AppRoutes;  
+export default AppRoutes;
