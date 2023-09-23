@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-    <RouterProvider router={AppRoutes}/>
+      <RouterProvider router={AppRoutes}/>
     </>
   )
 }
