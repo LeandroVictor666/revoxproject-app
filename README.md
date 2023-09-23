@@ -17,7 +17,7 @@ Minha pretenção com esse projeto é que ele seja trabalhado como SPA, inicialm
 Nesse projeto eu pretendo utilizar no front-end o ReactJs, React-Router-Dom, entre outras librarys que irá aparecer com o decorrer das necessidades.
 
 ---
-##Back-End
+## Back-End
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
