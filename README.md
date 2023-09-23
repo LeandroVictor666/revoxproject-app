@@ -4,8 +4,8 @@ Esse é o respositorio da aplicação front-end do projeto "RevoX", RevoX é meu
 Minha pretenção com esse projeto é que ele seja trabalhado como SPA, inicialmente eu iria utilizar o NextJs, porém, como é uma social media, uma aplicação SPA faz mais sentido, já que o nextjs utiliza SSR, e esse website irá conter muitas interações do usuario
 
 ---
-#Tecnologias
-##Client-Side
+# Tecnologias
+## Client-Side
 
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) 
