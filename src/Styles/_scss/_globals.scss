@@ -1,7 +1,10 @@
 @import "reset-css.scss";
 @import "fonts-import.scss";
 
+* {
+  transition: 0.8s;
+}
+
 body {
   font-family: Open Sans;
-  transition: 0.8s;
 }
