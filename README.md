@@ -2,6 +2,9 @@
 
 Esse é o respositorio da aplicação front-end do projeto "RevoX", RevoX é meu projeto de Rede Social
 Minha pretenção com esse projeto é que ele seja trabalhado como SPA, inicialmente eu iria utilizar o NextJs, porém, como é uma social media, uma aplicação SPA faz mais sentido, já que o nextjs utiliza SSR, e esse website irá conter muitas interações do usuario
+Na maioria se não todos os projetos que estão no meu repositorio representa um codigo do mundo real, e não algo didatico
+
+Nesse projeto estou seguindo a arquitetura TDD e aplicando conceitos de Clean-Code.
 
 ---
 
