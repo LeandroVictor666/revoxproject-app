@@ -1,5 +1,6 @@
 export default class PublicationDto {
   authorId: number;
+  publicationId: number;
   authorNickname: string;
   authorUsername: string;
   publicationDate: Date;
@@ -10,6 +11,7 @@ export default class PublicationDto {
 
   constructor(
     authorId: number,
+    publicationId: number,
     authorNickname: string,
     authorUsername: string,
     publicationDate: Date,
@@ -19,6 +21,7 @@ export default class PublicationDto {
     publicationSharesCounter: number
   ) {
     this.authorId = authorId;
+    this.publicationId = publicationId;
     this.authorNickname = authorNickname;
     this.authorUsername = authorUsername;
     this.publicationDate = publicationDate;
@@ -27,4 +30,6 @@ export default class PublicationDto {
     this.publicationCommentsCounter = publicationCommentsCounter;
     this.publicationSharesCounter = publicationSharesCounter;
   }
+
+  
 }
