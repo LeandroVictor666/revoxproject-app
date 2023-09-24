@@ -1,4 +1,7 @@
 @import "reset-css.scss";
+@import "fonts-import.scss";
+
 body {
-  background-color: #252525;
+  font-family: Open Sans;
+  transition: 0.8s;
 }

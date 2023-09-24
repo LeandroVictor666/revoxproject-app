@@ -1,0 +1,34 @@
+header {
+  box-shadow: 0px 8px 6px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+
+  .firstSection {
+    color: #fff;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    p{
+      cursor: default;
+    }
+  }
+
+  .lastSection {
+    nav {
+      a {
+        text-decoration: none;
+        color: white;
+        font-family: Open Sans;
+        font-size: 18px;
+      }
+      a:hover {
+        color: #b1b1b1;
+      }
+    }
+  }
+}

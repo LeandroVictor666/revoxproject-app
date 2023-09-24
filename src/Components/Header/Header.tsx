@@ -1,4 +1,5 @@
 import Styles from "../../Styles/app.module.css";
+
 const Header = (): JSX.Element => {
   return (
     <header>
@@ -7,8 +8,12 @@ const Header = (): JSX.Element => {
       </div>
       <div className={Styles.lastSection}>
         <nav>
-          <a href="/login">Login</a>
-          <a href="/register">Register</a>
+          <a href="/login" id="login-btn">
+            Login
+          </a>
+          <a href="/register" style={{ marginLeft: "16px" }}>
+            Register
+          </a>
         </nav>
       </div>
     </header>
