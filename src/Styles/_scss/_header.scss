@@ -1,33 +1,45 @@
-header {
+.pageHeader {
   box-shadow: 0px 8px 6px 0px rgba(0, 0, 0, 0.25);
   display: flex;
+  background-color: #141414;
   justify-content: space-between;
   align-items: center;
-  padding: 32px;
-
-  .firstSection {
-    color: #fff;
-    text-align: center;
-    font-family: Open Sans;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    p {
-      cursor: default;
-    }
-  }
-
-  .lastSection {
-    nav {
-      a {
-        text-decoration: none;
-        color: white;
-        font-family: Open Sans;
-        font-size: 18px;
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: $headerHeightDesktop;
+  $actualHeaderHeight: $headerHeightDesktop;
+  .containerFixer {
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .firstSection {
+      color: #fff;
+      text-align: center;
+      font-family: Open Sans;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      p {
+        cursor: default;
       }
-      a:hover {
-        color: #b1b1b1;
+    }
+
+    .lastSection {
+      nav {
+        a {
+          text-decoration: none;
+          color: white;
+          font-family: Open Sans;
+          font-size: 18px;
+        }
+        a:hover {
+          color: #b1b1b1;
+        }
       }
     }
   }

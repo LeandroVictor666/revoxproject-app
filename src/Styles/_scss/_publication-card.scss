@@ -1,0 +1,105 @@
+.publicationCard {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  padding: 32px 32px 16px 32px;
+  color: white;
+  background: $publicationCardColor;
+  border: 1px solid #202020;
+  border-radius: 6px;
+  max-width: $publicationMaxWidthDesktop;
+  min-width: #{$publicationMaxWidthDesktop / 2};
+  header {
+    img {
+      width: $pfpMaxWidthDesktop;
+      height: $pfpMaxHeightDesktop;
+      max-width: $pfpMaxWidthDesktop;
+      max-height: $pfpMaxHeightDesktop;
+      object-fit: cover;
+      border-radius: 100%;
+    }
+    img:hover {
+      filter: drop-shadow(0.6rem 0.6rem 0.75rem #131313);
+    }
+    .authorUsername {
+      margin-top: 16px;
+      color: #a5a3a3;
+      font-size: 16px;
+      font-weight: 400;
+      cursor: pointer;
+    }
+    .publicationDate {
+      margin-top: 32px;
+      font-size: 14px;
+      cursor: default;
+    }
+    .publicationHeaderContent {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .lineContainerFixer {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+  }
+  main {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  .publicationOrn:hover {
+    path {
+      stroke: rgb(255, 255, 255);
+    }
+  }
+
+  .publicationStatistic {
+    margin-top: 32px;
+    display: flex;
+    p {
+      margin-left: 16px;
+    }
+  }
+
+  .publicationFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+    border-radius: 16px;
+    padding: 16px;
+    background: #464646;
+    height: 30px;
+    width: fit-content;
+    margin-left: 50%;
+    transform: translate(-50%);
+    .publicationControl {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-right: 32px;
+      margin-left: 32px;
+      svg {
+        margin-top: 16px;
+      }
+    }
+    .publicationControl:hover {
+      background-color: rgb(43, 42, 42);
+    }
+    .publicationControl:active {
+      background-color: rgb(15, 15, 15);
+    }
+  }
+  .publicationFooter:hover {
+    box-shadow: 0px 8px 6px 0px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.publicationCard:hover {
+  box-shadow: 16px -16px 0px 0px #383838;
+}

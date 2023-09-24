@@ -1,7 +1,9 @@
 import Styles from "../../Styles/app.module.css";
 import PublicationDto from "../../DTO/PublicationDto";
 import PublicationPfpData from "../../types/PublicationPfp";
-import PublicationService from "../Services/Publication.Service";
+import PublicationService from "../../Services/Publication.Service";
+import PublicationOrn from "./PublicationOrn";
+import * as PublicationIcons from "./PublicationIcons";
 
 const PublicationCard = ({
   publicationDto,
@@ -26,21 +28,45 @@ const PublicationCard = ({
             publicationService.changePfpToDefaultPfp(publicationDto.authorId);
           }}
         ></img>
-        <p>@{publicationDto.authorUsername}</p>
-        <p>{publicationDto.authorNickname}</p>
-        <p>
-          {publicationService.getDateDiff(
-            publicationDto.publicationDate.getTime()
-          )}
-        </p>
+        <div className={Styles.publicationHeaderContent}>
+          <p className={Styles.authorUsername}>
+            @{publicationDto.authorUsername}
+          </p>
+          <p className={Styles.publicationDate}>
+            {publicationService.getDateDiff(
+              publicationDto.publicationDate.getTime()
+            )}
+          </p>
+        </div>
       </header>
+      <div className={Styles.lineContainerFixer}>
+        <div className={Styles.horizontalLine}></div>
+      </div>
       <main>
         <p>{publicationDto.publicationContent}</p>
       </main>
-      <footer>
+      <div className={Styles.lineContainerFixer}>
+        <PublicationOrn />
+      </div>
+      {/* i will use this later. */}
+      <div className={Styles.publicationStatistic} style={{ display: "none" }}>
         <p>Likes: {publicationDto.publicationLikesCounter}</p>
         <p>Comments: {publicationDto.publicationCommentsCounter}</p>
         <p>Shares: {publicationDto.publicationSharesCounter}</p>
+      </div>
+      <footer className={Styles.publicationFooter}>
+        <div className={Styles.publicationControl} id="like-publication">
+          <PublicationIcons.Heart />
+          <span>Like</span>
+        </div>
+        <div className={Styles.publicationControl} id="comment-publication">
+          <PublicationIcons.CommentDots />
+          <span>Comment</span>
+        </div>
+        <div className={Styles.publicationControl} id="share-publication">
+          <PublicationIcons.Share />
+          <span>Share</span>
+        </div>
       </footer>
     </div>
   );

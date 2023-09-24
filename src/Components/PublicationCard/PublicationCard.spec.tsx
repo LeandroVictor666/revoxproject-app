@@ -47,7 +47,7 @@ describe("Publication-Component", () => {
     expect(
       screen.getByText(`@${publicationDto.authorUsername}`)
     ).toBeInTheDocument();
-    expect(screen.getByText(publicationDto.authorNickname)).toBeInTheDocument();
+
     expect(screen.getByText(dateDiff)).toBeInTheDocument();
     expect(
       screen.getByText(publicationDto.publicationContent)
@@ -70,7 +70,7 @@ describe("Publication-Component", () => {
       authorNickname: faker.person.firstName(),
       authorUsername: faker.person.fullName(),
       publicationCommentsCounter: faker.number.int({ max: 99999 }),
-      publicationContent: faker.lorem.text(),
+      publicationContent: faker.lorem.lines({ min: 1, max: 1 }),
       publicationDate: new Date(),
       publicationLikesCounter: faker.number.int(),
       publicationSharesCounter: faker.number.int(),
@@ -81,7 +81,7 @@ describe("Publication-Component", () => {
     expect(
       screen.getByText(`@${publicationDto.authorUsername}`)
     ).toBeInTheDocument();
-    expect(screen.getByText(publicationDto.authorNickname)).toBeInTheDocument();
+
     expect(screen.getByText(dateDiff)).toBeInTheDocument();
     expect(
       screen.getByText(publicationDto.publicationContent)
