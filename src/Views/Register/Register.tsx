@@ -148,10 +148,16 @@ const Register = (): JSX.Element => {
               <p>Create new account</p>
             </button>
             <a href="/login">Already have a account?</a>
-            <p className={Styles.registerTerms}>
-              By registering on our website, you agree to our terms <br />
-              and conditions, and blah blah blah
-            </p>
+            <div className={Styles.termsOfServiceContainer}>
+              <div
+                className={Styles.horizontalLine}
+                style={{ marginTop: "32px" }}
+              ></div>
+              <p className={Styles.registerTerms}>
+                By registering on our website, you agree to our terms <br />
+                and conditions, and blah blah blah
+              </p>
+            </div>
           </div>
         </form>
       </div>

@@ -76,13 +76,27 @@
       a:hover {
         text-decoration: underline;
       }
-      .registerTerms {
+      .termsOfServiceContainer {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 32px;
-        width: 100%;
-        color: rgb(146, 146, 146);
+        .registerTerms {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 32px;
+          width: 100%;
+          color: rgb(146, 146, 146);
+        }
+      }
+      .termsOfServiceContainer:hover{
+        .registerTerms{
+            color: white;
+        }
+        .horizontalLine{
+            background-color: white;
+        }
       }
     }
   }
