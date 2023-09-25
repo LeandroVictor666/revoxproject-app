@@ -1,6 +1,6 @@
 import Styles from "../../Styles/app.module.css";
 import PublicationDto from "../../DTO/PublicationDto";
-import PublicationPfpData from "../../types/PublicationPfp";
+import PublicationPfpData from "../../Types/PublicationPfp";
 import PublicationService from "../../Services/Publication.Service";
 import PublicationOrn from "./PublicationOrn";
 import * as PublicationIcons from "./PublicationIcons";
