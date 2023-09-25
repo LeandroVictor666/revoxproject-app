@@ -35,8 +35,11 @@
         height: 30px;
         font-size: 15px;
       }
-      input:focus {
+      input:hover {
         background-color: #e7e7e7;
+      }
+      input:focus {
+        background-color: white;
         outline: 1.3px solid rgb(0, 0, 0);
       }
     }
@@ -49,6 +52,10 @@
         width: 100px;
         height: 30px;
         border: none;
+        cursor: pointer;
+      }
+      select:hover {
+        background-color: white;
       }
     }
 
@@ -67,7 +74,12 @@
         align-items: center;
         padding: 8px;
         font-size: 22px;
+        cursor: pointer;
       }
+      .registerBtn:hover {
+        border-color: white;
+      }
+
       a {
         margin-top: 16px;
         color: white;
@@ -90,12 +102,12 @@
           color: rgb(146, 146, 146);
         }
       }
-      .termsOfServiceContainer:hover{
-        .registerTerms{
-            color: white;
+      .termsOfServiceContainer:hover {
+        .registerTerms {
+          color: white;
         }
-        .horizontalLine{
-            background-color: white;
+        .horizontalLine {
+          background-color: white;
         }
       }
     }
