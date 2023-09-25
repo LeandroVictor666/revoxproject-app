@@ -1,0 +1,117 @@
+.loginContainer {
+  display: flex;
+  width: 100vw;
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $publicationCardColor;
+    width: max-content;
+    padding: 64px;
+    min-width: 50%;
+    max-width: 50%;
+    color: white;
+
+    .loginInputBox {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 32px;
+      p {
+        display: flex;
+        margin-right: 38.3%;
+        font-size: 14px;
+        cursor: default;
+      }
+      input {
+        width: 50%;
+        height: 25px;
+        text-align: center;
+        align-items: center;
+        padding: 4px;
+        background-color: #d9d9d9;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      input:hover {
+        background-color: #949494;
+      }
+    }
+
+    .loginControls {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      button {
+        cursor: pointer;
+      }
+      .loginBtn {
+        width: 50%;
+        color: #000;
+        text-align: center;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding: 8px;
+        border: none;
+      }
+      .loginBtn:hover {
+        background-color: #313131;
+        color: white;
+      }
+
+      .registerBtn {
+        margin-top: 32px;
+        background-color: transparent;
+        color: #fff;
+        text-align: center;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        border: none;
+        border: 1px solid black;
+        padding: 8px;
+      }
+      .registerBtn:hover {
+        border-color: white;
+      }
+      #forgotPasswordId {
+        margin-top: 16px;
+        text-decoration: none;
+        color: white;
+        font-size: 14px;
+        padding: 8px;
+      }
+      #forgotPasswordId:hover {
+        text-decoration: underline;
+      }
+      .horizontalLine {
+        margin-top: 32px;
+        width: 55%;
+      }
+
+      .bottomControls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+      .bottomControls:hover {
+        .horizontalLine {
+          background-color: rgb(134, 134, 134);
+        }
+      }
+    }
+  }
+}
