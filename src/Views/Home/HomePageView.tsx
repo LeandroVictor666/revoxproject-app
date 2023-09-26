@@ -2,9 +2,6 @@ import PublicationCard from "../../Components/PublicationCard/PublicationCard";
 import PublicationDto from "../../DTO/PublicationDto";
 import Styles from "../../Styles/app.module.css";
 
-//test-only
-import { faker } from "@faker-js/faker";
-
 const HomePageView = (): JSX.Element => {
   const fakePublicationDto: PublicationDto = {
     authorId: 0,

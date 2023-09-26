@@ -1,7 +1,7 @@
 import LoginService from "./Login.Service";
-import LoginErrorIdEnum from "../Types/LoginServiceErrorId.e";
-import * as AccountRules from "../Rules/AccountRules";
+import LoginErrorIdEnum from "../Types/InputValidationErrorObject.enum";
 import { faker } from "@faker-js/faker";
+const fakeBigText = faker.lorem.paragraphs(35);
 
 describe("Login Service Username Input Validation Method", () => {
   const loginService = new LoginService();
@@ -21,7 +21,7 @@ describe("Login Service Username Input Validation Method", () => {
   });
 
   it("should return a failed validation, errorcode: FailedMaxCharacters", () => {
-    const validationResult = loginService.validateUsername(faker.lorem.text());
+    const validationResult = loginService.validateUsername(fakeBigText);
     expect(validationResult.errorCode).toBe(
       LoginErrorIdEnum.FailedMaxCharacters
     );
@@ -64,12 +64,7 @@ describe("Login Service Password Input Validation Method", () => {
   });
 
   it("should return a failed validation, errorcode: FailedMaxCharacters", () => {
-    const validationResult = loginService.validatePassword(
-      faker.lorem.words({
-        min: AccountRules.PASSWORD_MAX_LENGTH + 12,
-        max: AccountRules.PASSWORD_MAX_LENGTH + 50,
-      })
-    );
+    const validationResult = loginService.validatePassword(fakeBigText);
     expect(validationResult.errorCode).toBe(
       LoginErrorIdEnum.FailedMaxCharacters
     );

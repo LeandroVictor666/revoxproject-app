@@ -1,6 +1,6 @@
 import * as AccountRules from "../Rules/AccountRules";
-import LoginErrorIdEnum from "../Types/LoginServiceErrorId.e";
-import LoginInputValidationObject from "../Types/LoginServiceValidation";
+import LoginErrorIdEnum from "../Types/InputValidationErrorObject.enum";
+import LoginInputValidationObject from "../Types/InputValidationResponse";
 
 export default class LoginService {
   /**

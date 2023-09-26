@@ -1,0 +1,1 @@
+export const Language = navigator.language;
