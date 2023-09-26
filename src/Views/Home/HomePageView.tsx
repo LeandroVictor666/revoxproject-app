@@ -5,7 +5,7 @@ import Styles from "../../Styles/app.module.css";
 //test-only
 import { faker } from "@faker-js/faker";
 
-const HomePage = (): JSX.Element => {
+const HomePageView = (): JSX.Element => {
   const fakePublicationDto: PublicationDto = {
     authorId: 0,
     publicationId: 0,
@@ -39,4 +39,4 @@ const HomePage = (): JSX.Element => {
   );
 };
 
-export default HomePage;
+export default HomePageView;

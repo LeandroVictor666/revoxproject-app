@@ -1,5 +1,5 @@
 import Styles from "../../Styles/app.module.css";
-const Register = (): JSX.Element => {
+const RegisterView = (): JSX.Element => {
   return (
     <main>
       <div className={Styles.registerContainer}>
@@ -165,4 +165,4 @@ const Register = (): JSX.Element => {
   );
 };
 
-export default Register;
+export default RegisterView;

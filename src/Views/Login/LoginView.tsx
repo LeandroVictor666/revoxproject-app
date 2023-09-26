@@ -1,5 +1,5 @@
 import Styles from "../../Styles/app.module.css";
-const Login = (): JSX.Element => {
+const LoginView = (): JSX.Element => {
   return (
     <div className={Styles.loginContainer}>
       <form className={Styles.loginForm}>
@@ -41,4 +41,4 @@ const Login = (): JSX.Element => {
   );
 };
 
-export default Login;
+export default LoginView;
