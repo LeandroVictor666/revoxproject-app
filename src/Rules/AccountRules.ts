@@ -12,6 +12,7 @@ export const BIRTHDAY_MIN_DAY = 1;
 export const BIRTHDAY_MAX_DAY = 31;
 export const BIRTHDAY_ACTUAL_YEAR = new Date().getFullYear();
 export const BIRTHDAY_MIN_YEAR = BIRTHDAY_ACTUAL_YEAR - 18;
+export const BIRTHDAY_MAX_YEAR = 1953;
 
 export const PASSWORD_MIN_LENGTH = 6;
 export const PASSWORD_MAX_LENGTH = 255;

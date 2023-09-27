@@ -6,15 +6,15 @@ import RegisterView from "../Views/Register/RegisterView";
 const AppRoutes = ReactRouter.createBrowserRouter([
   {
     path: "/",
-    element: <HomePageView />,
+    element: <HomePageView/>,
   },
   {
     path: "/login",
-    element: <LoginView />,
+    element: <LoginView/>,
   },
   {
     path: "/register",
-    element: <RegisterView />,
+    element: <RegisterView/>,
   },
 ]);
 
