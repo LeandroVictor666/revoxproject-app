@@ -1,6 +1,9 @@
 import { faker } from "@faker-js/faker";
 import InputValidationResponseEnums from "../../Types/InputValidationErrorObject.enum";
 import RegisterController from "./RegisterController";
+import RegisterAccountDto from "../../DTO/RegisterAccountDto";
+//import ServerResponseDto from "../../DTO/ServerResponseDto";
+
 const loremParagraphs = faker.lorem.paragraph(15);
 
 describe("test register controller username validation", () => {
@@ -84,5 +87,35 @@ describe("test register controller password validation", () => {
     expect(validationResult.errorCode).toBe(
       InputValidationResponseEnums.FailedMaxCharacters
     );
+  });
+});
+
+describe("test register controller registerFunction", () => {
+  const registerController = new RegisterController();
+  it("should return a error with", async () => {
+    const accountData: RegisterAccountDto = new RegisterAccountDto(
+      "a",
+      "leandro-victor-666",
+      "leandrovictordev@gmail.com",
+      "MYSECRETPASSWORD666",
+      14,
+      "July",
+      2004
+    );
+    try {
+      await registerController
+        .registerUser(accountData)
+        .then((res) => {
+          return Promise.resolve(res);
+        })
+        .catch((error) => {
+          return Promise.reject(error);
+        });
+    } catch (err) {
+      expect(err).toMatchObject({
+        isError: true,
+        responseType: 1,
+      });
+    }
   });
 });

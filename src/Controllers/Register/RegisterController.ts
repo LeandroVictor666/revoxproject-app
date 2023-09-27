@@ -4,6 +4,10 @@ import RegisterService from "../../Services/Register.Service";
 import InputEnums from "../../Types/InputEnums.enum";
 import InputValidationResponse from "../../Types/InputValidationResponse";
 import InputValidationResponseEnums from "../../Types/InputValidationErrorObject.enum";
+//import axios from "axios";
+import ServerResponseDto from "../../DTO/ServerResponseDto";
+import RegisterAccountDto from "../../DTO/RegisterAccountDto";
+import ServerErrorsEnum from "../../Types/ServerErrors.enum";
 
 export default class RegisterController implements RegisterInterface {
   registerService = new RegisterService();
@@ -61,5 +65,29 @@ export default class RegisterController implements RegisterInterface {
       isValid: true,
       errorCode: InputValidationResponseEnums.Success,
     };
+  }
+  async registerUser(
+    accountData: RegisterAccountDto
+  ): Promise<ServerResponseDto> {
+    const validationResult = this.validateUsername(accountData.username);
+    if (validationResult.isValid === false) {
+      const resultResponse: ServerResponseDto = {
+        isError: true,
+        response: this.errorMessegerService.dispatchInputValidationErrorMessage(
+          InputEnums.Username,
+          validationResult.errorCode
+        ).reason,
+        responseType: ServerErrorsEnum.ClientInputError,
+      };
+      return Promise.reject(resultResponse);
+    }
+
+
+
+    return Promise.resolve({
+      isError: false,
+      response: "validated-test.",
+      responseType: ServerErrorsEnum.Success,
+    });
   }
 }

@@ -1,7 +1,7 @@
 import ServerErrorsEnum from "../Types/ServerErrors.enum";
 
 type ServerResponseDto = {
-  readonly response: string;
+  readonly response: string | undefined;
   readonly isError: boolean;
   readonly responseType: ServerErrorsEnum;
   
