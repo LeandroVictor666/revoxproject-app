@@ -51,3 +51,11 @@ Nesse projeto estou seguindo a arquitetura TDD e aplicando conceitos de Clean-Co
 - 2. Agora, abra o arquivo 'tsconfig.json', na linha 19 (nesse momento que estou escrevendo essa doc): "noUnusedLocals": false,
 - 3. Altere o "noUnusedLocals": false, para '"noUnusedLocals": true,' (**SEM AS ASPAS SIMPLES!**), isso é necessario pois (até esse momento que estou escrevendo a doc, recebi um erro ao importa o global.css, pois é um arquivo de estilo global, não utilizo nenhuma variavel dele em nenhum local, e o eslinter reclama disso, por PADRÃO o noUnusedLocal fica ativado pois eu prezo pela qualidade/padrões de codigo, e só desabilito ao realizar o BUILD do projeto.)
 - 4. Agora rode o comando npm run build e seja feliz :D
+
+---
+
+# Status Do Projeto
+
+Atualmente, estou fazendo a responsividade do website, gosto de fazer projetos por etapas, fiz simulações de ambientes (server lento para enviar resposta da api, entre outras coisas), modal, erros, sucessos, antes de entrar na api do projeto, irei finalizar a responsividade, com o passar do desenvolvimento, irei liberar screenshots, meu plano para o design na verdade é refazer o css do projeto, começando com o conceito mobile-first (eu acho bem melhor, mais fácil e tranquilo para desenvolver dessa maneira, MUITO melhor adaptar coisas pequenas para grandes, do que grandes para pequenas.)
+## Screenshots 📸
+![Alt text](screenshots/screenshot_01.png?raw=true "Optional Title")
