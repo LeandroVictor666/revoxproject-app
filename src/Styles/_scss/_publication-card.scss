@@ -1,20 +1,16 @@
 .publicationCard {
   display: flex;
   flex-direction: column;
-  margin-bottom: 32px;
-  padding: 32px 32px 16px 32px;
-  color: white;
   background: $publicationCardColor;
+  padding: 16px 16px;
   border: 1px solid #202020;
   border-radius: 6px;
-  max-width: $publicationMaxWidthDesktop;
-  min-width: #{$publicationMaxWidthDesktop / 2};
+  max-width: 83vw;
+  margin-bottom: 32px;
   header {
     img {
-      width: $pfpMaxWidthDesktop;
-      height: $pfpMaxHeightDesktop;
-      max-width: $pfpMaxWidthDesktop;
-      max-height: $pfpMaxHeightDesktop;
+      width: $pfpWidthMobile;
+      height: $pfpHeightMobile;
       object-fit: cover;
       border-radius: 100%;
     }
@@ -22,9 +18,9 @@
       filter: drop-shadow(0.6rem 0.6rem 0.75rem #131313);
     }
     .authorUsername {
-      margin-top: 16px;
+      margin-top: 8px;
       color: #a5a3a3;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 400;
       cursor: pointer;
     }
@@ -39,27 +35,26 @@
     }
   }
   .lineContainerFixer {
-    margin-top: 32px;
+    margin-top: 16px;
     display: flex;
     justify-content: center;
   }
   main {
     display: flex;
     justify-content: center;
-    margin-top: 32px;
+    margin-top: 16px;
   }
-
+  .publicationOrn {
+    width: 250px;
+  }
   .publicationOrn:hover {
     path {
-      stroke: rgb(255, 255, 255);
+      width: 30px;
     }
   }
 
   .publicationStatistic {
-    margin-top: 32px;
-    display: flex;
     p {
-      margin-left: 16px;
     }
   }
 
@@ -67,12 +62,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 32px;
+    margin-top: 16px;
     border-radius: 16px;
     padding: 16px;
     background: #464646;
     height: 30px;
-    width: fit-content;
+    width: 95%;
     margin-left: 50%;
     transform: translate(-50%);
     .publicationControl {
@@ -82,10 +77,12 @@
       justify-content: center;
       padding: 2px 8px;
       border-radius: 6px;
-      margin-right: 32px;
-      margin-left: 32px;
+      span {
+        font-size: 14px;
+      }
       svg {
-        margin-top: 16px;
+        margin-top: 8px;
+        width: 32px;
       }
     }
     .publicationControl:hover {
