@@ -4,7 +4,6 @@ import RegisterService from "../../Services/Register.Service";
 import InputEnums from "../../Types/InputEnums.enum";
 import InputValidationResponse from "../../Types/InputValidationResponse";
 import InputValidationResponseEnums from "../../Types/InputValidationErrorObject.enum";
-//import axios from "axios";
 import ServerResponseDto from "../../DTO/ServerResponseDto";
 import RegisterAccountDto from "../../DTO/RegisterAccountDto";
 import ServerErrorsEnum from "../../Types/ServerErrors.enum";
@@ -66,27 +65,63 @@ export default class RegisterController implements RegisterInterface {
       errorCode: InputValidationResponseEnums.Success,
     };
   }
+
+  private async fakeAPIDelay(delay: number = 2500): Promise<boolean> {
+    return new Promise((resolve) => setTimeout(resolve, delay));
+  }
+
   async registerUser(
     accountData: RegisterAccountDto
-  ): Promise<ServerResponseDto> {
-    const validationResult = this.validateUsername(accountData.username);
-    if (validationResult.isValid === false) {
-      const resultResponse: ServerResponseDto = {
-        isError: true,
-        response: this.errorMessegerService.dispatchInputValidationErrorMessage(
+  ): Promise<ServerResponseDto | InputValidationResponse> {
+    await this.fakeAPIDelay();
+    const usernameValidationResult = this.validateUsername(
+      accountData.username
+    );
+    if (usernameValidationResult.isValid === false) {
+      const response =
+        this.errorMessegerService.dispatchInputValidationErrorMessage(
           InputEnums.Username,
-          validationResult.errorCode
-        ).reason,
-        responseType: ServerErrorsEnum.ClientInputError,
-      };
-      return Promise.reject(resultResponse);
+          usernameValidationResult.errorCode
+        );
+      return Promise.reject(response);
+    }
+    const nicknameValidationResult = this.validateNickname(
+      accountData.nickname
+    );
+    if (nicknameValidationResult.isValid !== true) {
+      const response =
+        this.errorMessegerService.dispatchInputValidationErrorMessage(
+          InputEnums.Nickname,
+          nicknameValidationResult.errorCode
+        );
+      return Promise.reject(response);
     }
 
+    const emailValidationResult = this.validateEmail(accountData.email);
+    if (emailValidationResult.isValid !== true) {
+      const response =
+        this.errorMessegerService.dispatchInputValidationErrorMessage(
+          InputEnums.Email,
+          emailValidationResult.errorCode
+        );
+      return Promise.reject(response);
+    }
 
+    const passwordValidationResult = this.validatePassword(
+      accountData.password
+    );
+    if (passwordValidationResult.isValid !== true) {
+      const response =
+        this.errorMessegerService.dispatchInputValidationErrorMessage(
+          InputEnums.Password,
+          passwordValidationResult.errorCode
+        );
+      return Promise.reject(response);
+    }
 
     return Promise.resolve({
       isError: false,
-      response: "validated-test.",
+      response: "",
       responseType: ServerErrorsEnum.Success,
     });
   }

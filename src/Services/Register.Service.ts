@@ -136,7 +136,7 @@ export default class RegisterService {
     if (haveBlankSpaces) {
       return {
         isValid: false,
-        errorCode: InputValidationErrorEnum.FailedInvalidInput,
+        errorCode: InputValidationErrorEnum.FailedNoBlankSpaces,
         reason: "The password field can't have blank spaces.",
       };
     }

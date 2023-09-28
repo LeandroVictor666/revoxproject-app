@@ -5,6 +5,9 @@ import renderYearsComponent from "./RegisterYearsComponent";
 import * as AccountRules from "../../Rules/AccountRules";
 import renderDaysComponent from "./RenderDaysComponent";
 import RenderMonthsComponent from "./RenderMonthsComponent";
+import RegisterAccountDto from "../../DTO/RegisterAccountDto";
+import * as ReactRedux from "react-redux";
+import * as RegisterViewFunctions from "../../Functions/RegisterViewFunctions";
 
 const RegisterView = (): JSX.Element => {
   const [username, setUsername] = React.useState<string>("");
@@ -16,6 +19,7 @@ const RegisterView = (): JSX.Element => {
   const [year, setYear] = React.useState<number>(
     AccountRules.BIRTHDAY_ACTUAL_YEAR
   );
+  const dispatch = ReactRedux.useDispatch();
 
   const inputHandler = (
     ev:
@@ -54,9 +58,25 @@ const RegisterView = (): JSX.Element => {
       }
     }
   };
+  const submitHandler = async (
+    ev: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    ev.preventDefault();
+    const accountData = new RegisterAccountDto(
+      username,
+      nickname,
+      email,
+      password,
+      day,
+      month,
+      year
+    );
+    await RegisterViewFunctions.callToRegisterFunction(accountData, dispatch);
+    return;
+  };
 
   return (
-    <main>
+    <main id="register-main-container">
       <div className={Styles.registerContainer}>
         <form className={Styles.registerForm}>
           <div className={Styles.registerInputBox}>
@@ -123,7 +143,6 @@ const RegisterView = (): JSX.Element => {
                   inputHandler(ev);
                 }}
               >
-
                 {RenderMonthsComponent()}
               </select>
               <select
@@ -149,7 +168,14 @@ const RegisterView = (): JSX.Element => {
             </div>
           </div>
           <div className={Styles.registerControls}>
-            <button className={Styles.registerBtn}>
+            <button
+              className={Styles.registerBtn}
+              id="register-btn"
+              style={{}}
+              onClick={async (ev) => {
+                await submitHandler(ev);
+              }}
+            >
               <p>Create new account</p>
             </button>
             <a href="/login">Already have a account?</a>

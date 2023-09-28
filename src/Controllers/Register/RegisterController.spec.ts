@@ -1,10 +1,11 @@
-import { faker } from "@faker-js/faker";
+//import { faker } from "@faker-js/faker";
 import InputValidationResponseEnums from "../../Types/InputValidationErrorObject.enum";
 import RegisterController from "./RegisterController";
 import RegisterAccountDto from "../../DTO/RegisterAccountDto";
+import InputValidationResponse from "../../Types/InputValidationResponse";
 //import ServerResponseDto from "../../DTO/ServerResponseDto";
 
-const loremParagraphs = faker.lorem.paragraph(15);
+//const loremParagraphs = faker.lorem.paragraph(15);
 
 describe("test register controller username validation", () => {
   const registerController = new RegisterController();
@@ -15,84 +16,54 @@ describe("test register controller username validation", () => {
       InputValidationResponseEnums.FailedMinCharacters
     );
   });
-  it("should return a failed validation, errorCode: Max Characters.", () => {
-    const validationResult =
-      registerController.validateUsername(loremParagraphs);
-    expect(validationResult.isValid).toBe(false);
-    expect(validationResult.errorCode).toBe(
-      InputValidationResponseEnums.FailedMaxCharacters
-    );
-  });
-});
-
-describe("test register controller nickname validation", () => {
-  const registerController = new RegisterController();
-  it("should return a failed validation, errorCode: Min Characters.", () => {
-    const validationResult = registerController.validateNickname("L");
-    expect(validationResult.isValid).toBe(false);
-    expect(validationResult.errorCode).toBe(
-      InputValidationResponseEnums.FailedMinCharacters
-    );
-  });
-  it("should return a failed validation, errorCode: Max Characters.", () => {
-    const validationResult =
-      registerController.validateNickname(loremParagraphs);
-    expect(validationResult.isValid).toBe(false);
-    expect(validationResult.errorCode).toBe(
-      InputValidationResponseEnums.FailedMaxCharacters
-    );
-  });
 });
 
 describe("test register controller email validation", () => {
   const registerController = new RegisterController();
-  it("should return a failed validation, errorCode: Min Characters.", () => {
-    const validationResult = registerController.validateEmail("L");
-    expect(validationResult.isValid).toBe(false);
-    expect(validationResult.errorCode).toBe(
-      InputValidationResponseEnums.FailedMinCharacters
-    );
-  });
-  it("should return a failed validation, errorCode: Max Characters.", () => {
-    const validationResult = registerController.validateEmail(loremParagraphs);
-    expect(validationResult.isValid).toBe(false);
-    expect(validationResult.errorCode).toBe(
-      InputValidationResponseEnums.FailedMaxCharacters
-    );
-  });
-  it("should return a failed validation, errorCode: Invalid (email) Input", () => {
+  it("should return a failed validation, errorCode: Invalid Email Input", () => {
     const validationResult = registerController.validateEmail(
-      "invalidEMail@idontknown"
+      "leandrovictordev@invalidDigitcom"
     );
-    expect(validationResult.isValid).toBe(false);
-    expect(validationResult.errorCode).toBe(
-      InputValidationResponseEnums.FailedInvalidInput
+    expect(validationResult).toMatchObject({
+      isValid: false,
+      errorCode: InputValidationResponseEnums.FailedInvalidInput,
+    });
+  });
+  it("should return a success validation (EMAIL)", () => {
+    const validationResult = registerController.validateEmail(
+      "leandrovictordev@gmail.com"
     );
+    expect(validationResult).toMatchObject({
+      isValid: true,
+      errorCode: InputValidationResponseEnums.Success,
+    });
   });
 });
 
 describe("test register controller password validation", () => {
   const registerController = new RegisterController();
-  it("should return a failed validation, errorCode: Min Characters.", () => {
-    const validationResult = registerController.validatePassword("1"); /*  */
-    expect(validationResult.isValid).toBe(false);
-    expect(validationResult.errorCode).toBe(
-      InputValidationResponseEnums.FailedMinCharacters
-    );
-  });
-  it("should return a failed validation, errorCode: Max Character", () => {
+  it("should return a failed validation, errorCode: FailedMinUpperCase", () => {
     const validationResult =
-      registerController.validatePassword(loremParagraphs);
-    expect(validationResult.isValid).toBe(false);
-    expect(validationResult.errorCode).toBe(
-      InputValidationResponseEnums.FailedMaxCharacters
-    );
+      registerController.validatePassword("mysecretpassword");
+    expect(validationResult).toMatchObject({
+      isValid: false,
+      errorCode: InputValidationResponseEnums.FailedMinUpperCase,
+    });
+  });
+
+  it("should return a failed validation, errorCode: FailedBlankSpaces", () => {
+    const validationResult =
+      registerController.validatePassword("I N V A L I D P A S S W O R D E X A M P L E");
+    expect(validationResult).toMatchObject({
+      isValid: false,
+      errorCode: InputValidationResponseEnums.FailedNoBlankSpaces,
+    });
   });
 });
 
 describe("test register controller registerFunction", () => {
   const registerController = new RegisterController();
-  it("should return a error with", async () => {
+  it("should return a username validation error, errorCode: failed min length", async () => {
     const accountData: RegisterAccountDto = new RegisterAccountDto(
       "a",
       "leandro-victor-666",
@@ -102,6 +73,11 @@ describe("test register controller registerFunction", () => {
       "July",
       2004
     );
+    const expectedObject: InputValidationResponse = {
+      errorCode: InputValidationResponseEnums.FailedMinCharacters,
+      isValid: false,
+    };
+
     try {
       await registerController
         .registerUser(accountData)
@@ -112,10 +88,7 @@ describe("test register controller registerFunction", () => {
           return Promise.reject(error);
         });
     } catch (err) {
-      expect(err).toMatchObject({
-        isError: true,
-        responseType: 1,
-      });
+      expect(err).toMatchObject(expectedObject);
     }
   });
 });

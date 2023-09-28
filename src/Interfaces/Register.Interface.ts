@@ -8,5 +8,7 @@ export default interface RegisterInterface {
   validateNickname(nickname: string): InputValidationResponse;
   validateEmail(email: string): InputValidationResponse;
   validatePassword(password: string): InputValidationResponse;
-  registerUser(accountData: RegisterAccountDto): Promise<ServerResponseDto>;
+  registerUser(
+    accountData: RegisterAccountDto
+  ): Promise<ServerResponseDto | InputValidationResponse>;
 }
