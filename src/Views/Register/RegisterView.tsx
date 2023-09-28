@@ -22,9 +22,7 @@ const RegisterView = (): JSX.Element => {
   const dispatch = ReactRedux.useDispatch();
 
   const inputHandler = (
-    ev:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLSelectElement>
+    ev: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const inputType = ev.target.getAttribute("name");
     switch (inputType) {

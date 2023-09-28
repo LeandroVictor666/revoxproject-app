@@ -1,10 +1,37 @@
 import Styles from "../../Styles/app.module.css";
+import * as React from "react";
 const LoginView = (): JSX.Element => {
-  
+  const [username, setUsername] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
+
+  const inputHandler = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    switch (ev.target.getAttribute("name")) {
+      case "username": {
+        setUsername(ev.target.value);
+        break;
+      }
+      case "password": {
+        setPassword(ev.target.value);
+        break;
+      }
+    }
+  };
+
+  const callToLoginFn = (ev: React.FormEvent<HTMLFormElement>) => {
+    ev.preventDefault();
+    
+    return;
+  };
 
   return (
     <div className={Styles.loginContainer}>
-      <form className={Styles.loginForm}>
+      <form
+        className={Styles.loginForm}
+        method="post"
+        onSubmit={(ev) => {
+          callToLoginFn(ev);
+        }}
+      >
         <div className={`${Styles.usernameInputBox} ${Styles.loginInputBox}`}>
           <p>Username</p>
           <input
@@ -12,6 +39,10 @@ const LoginView = (): JSX.Element => {
             name="username"
             placeholder="Input Your Username"
             autoComplete="off"
+            value={username}
+            onChange={(ev) => {
+              inputHandler(ev);
+            }}
           />
         </div>
         <div className={`${Styles.passwordInputBox} ${Styles.loginInputBox}`}>
@@ -20,6 +51,10 @@ const LoginView = (): JSX.Element => {
             type="password"
             name="password"
             placeholder="Input Your Secret Password!"
+            value={password}
+            onChange={(ev) => {
+              inputHandler(ev);
+            }}
           />
         </div>
         <input type="submit" style={{ display: "none" }} />

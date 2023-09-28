@@ -1,9 +1,9 @@
-import LoginErrorIdEnum from "./InputValidationErrorObject.enum";
+import InputValidationErrorEnum from "./InputValidationErrorObject.enum";
 
 type InputValidationResponse = {
   isValid: boolean;
   reason?: string;
-  errorCode: LoginErrorIdEnum;
+  errorCode: InputValidationErrorEnum;
 };
 
 export default InputValidationResponse;

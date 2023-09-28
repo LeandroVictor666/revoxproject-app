@@ -13,7 +13,7 @@ export default class ErrorMessagerService {
     errorType: InputValidationResponseEnums
   ): InputValidationResponse {
     switch (ClientEnviroment.Language) {
-      case "en-US": {
+      default: {
         switch (inputWithError) {
           case InputEnums.Username: {
             switch (errorType) {
@@ -43,6 +43,13 @@ export default class ErrorMessagerService {
                   isValid: false,
                   errorCode: errorType,
                   reason: `Please fill a valid Username, the following special characters are not valid: [@, ?, %, ', ",]`,
+                };
+              }
+              case InputValidationResponseEnums.Success: {
+                return {
+                  isValid: true,
+                  errorCode: errorType,
+                  reason: "Success",
                 };
               }
             }
@@ -78,6 +85,13 @@ export default class ErrorMessagerService {
                   reason: `Please fill a valid Nickname, the following special characters are not valid: [@, ?, %, ', ",]`,
                 };
               }
+              case InputValidationResponseEnums.Success: {
+                return {
+                  isValid: true,
+                  errorCode: errorType,
+                  reason: "Success",
+                };
+              }
             }
             break;
           }
@@ -111,6 +125,13 @@ export default class ErrorMessagerService {
                   reason: `Please fill a valid email.`,
                 };
               }
+              case InputValidationResponseEnums.Success: {
+                return {
+                  isValid: true,
+                  errorCode: errorType,
+                  reason: "Success",
+                };
+              }
             }
             break;
           }
@@ -141,7 +162,7 @@ export default class ErrorMessagerService {
                 return {
                   isValid: false,
                   errorCode: errorType,
-                  reason: `Please fill in the Password field correctly, The password requires at least ${AccountRules.PASSWORD_MIN_UPPERCASE} special character.`,
+                  reason: `Please fill in the Password field correctly, The password requires at least ${AccountRules.PASSWORD_MIN_UPPERCASE} uppercase letter.`,
                 };
               }
               case InputValidationResponseEnums.FailedNoBlankSpaces: {
@@ -165,6 +186,13 @@ export default class ErrorMessagerService {
                   isValid: false,
                   errorCode: errorType,
                   reason: "Please fill a valid password",
+                };
+              }
+              case InputValidationResponseEnums.Success: {
+                return {
+                  isValid: true,
+                  errorCode: errorType,
+                  reason: "Success",
                 };
               }
             }
@@ -206,6 +234,13 @@ export default class ErrorMessagerService {
                   isValid: false,
                   errorCode: errorType,
                   reason: "Please, insert a valid month in birthday",
+                };
+              }
+              case InputValidationResponseEnums.Success: {
+                return {
+                  isValid: true,
+                  errorCode: errorType,
+                  reason: "Success",
                 };
               }
             }

@@ -1,61 +1,61 @@
 import * as AccountRules from "../Rules/AccountRules";
-import LoginErrorIdEnum from "../Types/InputValidationErrorObject.enum";
-import LoginInputValidationObject from "../Types/InputValidationResponse";
+import InputValidationResponseEnum from "../Types/InputValidationErrorObject.enum";
+import InputValidationResponse from "../Types/InputValidationResponse";
 
 export default class LoginService {
   /**
 
    * @param {string} username - Username input to validate
-   * @returns {LoginInputValidationObject} returns a object with details of failure/success validation
+   * @returns {InputValidationResponse} returns a object with details of failure/success validation
    */
-  validateUsername(username: string): LoginInputValidationObject {
+  validateUsername(username: string): InputValidationResponse {
     if (username === "" || username === undefined) {
       return {
         isValid: false,
-        errorCode: LoginErrorIdEnum.FailedInputIsEmpty,
+        errorCode: InputValidationResponseEnum.FailedInputIsEmpty,
         reason: "The user did not fill in the username field.",
       };
     } else if (username.length < AccountRules.USERNAME_MIN_LENGTH) {
       return {
         isValid: false,
-        errorCode: LoginErrorIdEnum.FailedMinCharacters,
+        errorCode: InputValidationResponseEnum.FailedMinCharacters,
         reason:
           "The user did not fill a valid username field, Min Characters: ",
       };
     } else if (username.length > AccountRules.USERNAME_MAX_LENGTH) {
       return {
         isValid: false,
-        errorCode: LoginErrorIdEnum.FailedMaxCharacters,
+        errorCode: InputValidationResponseEnum.FailedMaxCharacters,
         reason:
           "The user did no fill a valid username field, Max CHaracters: 35",
       };
     }
     return {
       isValid: true,
-      errorCode: LoginErrorIdEnum.Success,
+      errorCode: InputValidationResponseEnum.Success,
     };
   }
   /**
    * @param {string} password - Password input to validate
-   * @returns {LoginInputValidationObject} returns a object with details of failure/success validation
+   * @returns {InputValidationResponse} returns a object with details of failure/success validation
    */
-  validatePassword(password: string): LoginInputValidationObject {
+  validatePassword(password: string): InputValidationResponse {
     if (password === "" || password === undefined) {
       return {
         isValid: false,
-        errorCode: LoginErrorIdEnum.FailedInputIsEmpty,
+        errorCode: InputValidationResponseEnum.FailedInputIsEmpty,
         reason: "The user did not fill in the password field.",
       };
     } else if (password.length < AccountRules.PASSWORD_MIN_LENGTH) {
       return {
         isValid: false,
-        errorCode: LoginErrorIdEnum.FailedMinCharacters,
+        errorCode: InputValidationResponseEnum.FailedMinCharacters,
         reason: `The user did not fill a valid password field, Min Characters: ${AccountRules.PASSWORD_MIN_LENGTH}`,
       };
     } else if (password.length > AccountRules.PASSWORD_MAX_LENGTH) {
       return {
         isValid: false,
-        errorCode: LoginErrorIdEnum.FailedMaxCharacters,
+        errorCode: InputValidationResponseEnum.FailedMaxCharacters,
         reason: `The user did no fill a valid password field, Max Characters: ${AccountRules.PASSWORD_MAX_LENGTH}`,
       };
     }
@@ -66,7 +66,7 @@ export default class LoginService {
     if (haveBlankSpaces) {
       return {
         isValid: false,
-        errorCode: LoginErrorIdEnum.FailedInvalidInput,
+        errorCode: InputValidationResponseEnum.FailedInvalidInput,
         reason: "The password field can't have blank spaces.",
       };
     }
@@ -75,7 +75,7 @@ export default class LoginService {
     if (upperCaseResult === null || upperCaseResult === undefined) {
       return {
         isValid: false,
-        errorCode: LoginErrorIdEnum.FailedMinUpperCase,
+        errorCode: InputValidationResponseEnum.FailedMinUpperCase,
         reason: `The password field must have at least ${AccountRules.PASSWORD_MIN_UPPERCASE} uppercase letter.`,
       };
     }
@@ -83,7 +83,7 @@ export default class LoginService {
     if (upperCaseResult?.length < AccountRules.PASSWORD_MIN_UPPERCASE) {
       return {
         isValid: false,
-        errorCode: LoginErrorIdEnum.FailedMinUpperCase,
+        errorCode: InputValidationResponseEnum.FailedMinUpperCase,
         reason: `The password field must have at least ${AccountRules.PASSWORD_MIN_UPPERCASE} uppercase letter.`,
       };
     }
@@ -96,17 +96,16 @@ export default class LoginService {
       !passwordHaveDigits ||
       passwordHaveDigits.length < AccountRules.PASSWORD_MIN_DIGITS
     ) {
-      console.log(passwordHaveDigits?.length);
       return {
         isValid: false,
-        errorCode: LoginErrorIdEnum.FailedMinDigits,
+        errorCode: InputValidationResponseEnum.FailedMinDigits,
         reason: `The password field must have at least ${AccountRules.PASSWORD_MIN_DIGITS} number digits.`,
       };
     }
 
     return {
       isValid: true,
-      errorCode: LoginErrorIdEnum.Success,
+      errorCode: InputValidationResponseEnum.Success,
     };
   }
 }
