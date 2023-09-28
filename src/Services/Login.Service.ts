@@ -14,6 +14,7 @@ export default class LoginService {
         isValid: false,
         errorCode: InputValidationResponseEnum.FailedInputIsEmpty,
         reason: "The user did not fill in the username field.",
+        responseFrom: "client",
       };
     } else if (username.length < AccountRules.USERNAME_MIN_LENGTH) {
       return {
@@ -21,6 +22,7 @@ export default class LoginService {
         errorCode: InputValidationResponseEnum.FailedMinCharacters,
         reason:
           "The user did not fill a valid username field, Min Characters: ",
+        responseFrom: "client",
       };
     } else if (username.length > AccountRules.USERNAME_MAX_LENGTH) {
       return {
@@ -28,11 +30,13 @@ export default class LoginService {
         errorCode: InputValidationResponseEnum.FailedMaxCharacters,
         reason:
           "The user did no fill a valid username field, Max CHaracters: 35",
+        responseFrom: "client",
       };
     }
     return {
       isValid: true,
       errorCode: InputValidationResponseEnum.Success,
+      responseFrom: "client",
     };
   }
   /**
@@ -45,18 +49,21 @@ export default class LoginService {
         isValid: false,
         errorCode: InputValidationResponseEnum.FailedInputIsEmpty,
         reason: "The user did not fill in the password field.",
+        responseFrom: "client",
       };
     } else if (password.length < AccountRules.PASSWORD_MIN_LENGTH) {
       return {
         isValid: false,
         errorCode: InputValidationResponseEnum.FailedMinCharacters,
         reason: `The user did not fill a valid password field, Min Characters: ${AccountRules.PASSWORD_MIN_LENGTH}`,
+        responseFrom: "client",
       };
     } else if (password.length > AccountRules.PASSWORD_MAX_LENGTH) {
       return {
         isValid: false,
         errorCode: InputValidationResponseEnum.FailedMaxCharacters,
         reason: `The user did no fill a valid password field, Max Characters: ${AccountRules.PASSWORD_MAX_LENGTH}`,
+        responseFrom: "client",
       };
     }
 
@@ -68,6 +75,7 @@ export default class LoginService {
         isValid: false,
         errorCode: InputValidationResponseEnum.FailedInvalidInput,
         reason: "The password field can't have blank spaces.",
+        responseFrom: "client",
       };
     }
 
@@ -77,6 +85,7 @@ export default class LoginService {
         isValid: false,
         errorCode: InputValidationResponseEnum.FailedMinUpperCase,
         reason: `The password field must have at least ${AccountRules.PASSWORD_MIN_UPPERCASE} uppercase letter.`,
+        responseFrom: "client",
       };
     }
 
@@ -85,6 +94,7 @@ export default class LoginService {
         isValid: false,
         errorCode: InputValidationResponseEnum.FailedMinUpperCase,
         reason: `The password field must have at least ${AccountRules.PASSWORD_MIN_UPPERCASE} uppercase letter.`,
+        responseFrom: "client",
       };
     }
 
@@ -100,12 +110,14 @@ export default class LoginService {
         isValid: false,
         errorCode: InputValidationResponseEnum.FailedMinDigits,
         reason: `The password field must have at least ${AccountRules.PASSWORD_MIN_DIGITS} number digits.`,
+        responseFrom: "client",
       };
     }
 
     return {
       isValid: true,
       errorCode: InputValidationResponseEnum.Success,
+      responseFrom: "client",
     };
   }
 }

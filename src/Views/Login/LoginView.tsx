@@ -1,9 +1,12 @@
 import Styles from "../../Styles/app.module.css";
 import * as React from "react";
+import * as ReactRedux from "react-redux";
+import * as LoginViewFunctions from "../../Functions/LoginViewFunctions";
 const LoginView = (): JSX.Element => {
   const [username, setUsername] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
 
+  const dispatcher = ReactRedux.useDispatch();
   const inputHandler = (ev: React.ChangeEvent<HTMLInputElement>) => {
     switch (ev.target.getAttribute("name")) {
       case "username": {
@@ -16,10 +19,12 @@ const LoginView = (): JSX.Element => {
       }
     }
   };
-
   const callToLoginFn = (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
-    
+    LoginViewFunctions.callToRegisterFunction(
+      { username, password },
+      dispatcher
+    );
     return;
   };
 

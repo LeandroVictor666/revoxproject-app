@@ -54,6 +54,7 @@ export default class LoginController {
       isError: false,
       response: `user: ${loginAccountDto.password}`,
       responseType: ServerErrorsEnum.Success,
+      responseFrom: "server",
     };
     return Promise.resolve(promiseObject);
   }

@@ -22,6 +22,7 @@ export default class RegisterController implements RegisterInterface {
     return {
       isValid: true,
       errorCode: InputValidationResponseEnums.Success,
+      responseFrom: "client",
     };
   }
   validateNickname(nickname: string): InputValidationResponse {
@@ -35,6 +36,7 @@ export default class RegisterController implements RegisterInterface {
     return {
       isValid: true,
       errorCode: InputValidationResponseEnums.Success,
+      responseFrom: "client",
     };
   }
   validateEmail(email: string): InputValidationResponse {
@@ -49,6 +51,7 @@ export default class RegisterController implements RegisterInterface {
     return {
       isValid: true,
       errorCode: InputValidationResponseEnums.Success,
+      responseFrom: "client",
     };
   }
   validatePassword(password: string): InputValidationResponse {
@@ -63,6 +66,7 @@ export default class RegisterController implements RegisterInterface {
     return {
       isValid: true,
       errorCode: InputValidationResponseEnums.Success,
+      responseFrom: "client",
     };
   }
 
@@ -119,10 +123,13 @@ export default class RegisterController implements RegisterInterface {
       return Promise.reject(response);
     }
 
-    return Promise.resolve({
+    const responseObject: ServerResponseDto = {
       isError: false,
       response: "",
+      responseFrom: "server",
       responseType: ServerErrorsEnum.Success,
-    });
+    };
+
+    return Promise.resolve(responseObject);
   }
 }

@@ -52,8 +52,9 @@ describe("test register controller password validation", () => {
   });
 
   it("should return a failed validation, errorCode: FailedBlankSpaces", () => {
-    const validationResult =
-      registerController.validatePassword("I N V A L I D P A S S W O R D E X A M P L E");
+    const validationResult = registerController.validatePassword(
+      "I N V A L I D P A S S W O R D E X A M P L E"
+    );
     expect(validationResult).toMatchObject({
       isValid: false,
       errorCode: InputValidationResponseEnums.FailedNoBlankSpaces,
@@ -76,6 +77,7 @@ describe("test register controller registerFunction", () => {
     const expectedObject: InputValidationResponse = {
       errorCode: InputValidationResponseEnums.FailedMinCharacters,
       isValid: false,
+      responseFrom: "client",
     };
 
     try {

@@ -8,6 +8,7 @@ import RenderMonthsComponent from "./RenderMonthsComponent";
 import RegisterAccountDto from "../../DTO/RegisterAccountDto";
 import * as ReactRedux from "react-redux";
 import * as RegisterViewFunctions from "../../Functions/RegisterViewFunctions";
+import RegisterController from "../../Controllers/Register/RegisterController";
 
 const RegisterView = (): JSX.Element => {
   const [username, setUsername] = React.useState<string>("");
@@ -73,61 +74,172 @@ const RegisterView = (): JSX.Element => {
     return;
   };
 
+  //é melhor instanciar um unico objeto (RegisterController), do que criar 1 instancia a cada vez que a função seja renderizada pelo react
+  const registerController = new RegisterController();
+
+  const renderUsernameInput = () => {
+    const validationResult = registerController.validateUsername(username);
+    let borderStyle: React.CSSProperties = {
+      border: "1px solid black",
+    };
+
+    if (username.length === 0) {
+      borderStyle = {
+        border: "1px solid black",
+      };
+    } else if (validationResult.isValid === false) {
+      borderStyle = {
+        ...borderStyle,
+        borderColor: "red",
+      };
+    } else {
+      borderStyle = {
+        ...borderStyle,
+        borderColor: "lime",
+      };
+    }
+
+    return (
+      <div className={Styles.registerInputBox}>
+        <p>Username</p>
+        <input
+          type="text"
+          placeholder="Input Your Username"
+          name="username"
+          autoComplete="off"
+          value={username}
+          style={borderStyle}
+          onChange={(ev) => {
+            inputHandler(ev);
+          }}
+        />
+      </div>
+    );
+  };
+  const renderNicknameInput = () => {
+    const validationResult = registerController.validateNickname(nickname);
+    let borderStyle: React.CSSProperties = {
+      border: "1px solid black",
+    };
+
+    if (nickname.length === 0) {
+      borderStyle = {
+        border: "1px solid black",
+      };
+    } else if (validationResult.isValid === false) {
+      borderStyle = {
+        ...borderStyle,
+        borderColor: "red",
+      };
+    } else {
+      borderStyle = {
+        ...borderStyle,
+        borderColor: "lime",
+      };
+    }
+    return (
+      <div className={Styles.registerInputBox}>
+        <p>Nickname</p>
+        <input
+          type="text"
+          placeholder="Input Your Nickname"
+          name="nickname"
+          autoComplete="off"
+          style={borderStyle}
+          value={nickname}
+          onChange={(ev) => {
+            inputHandler(ev);
+          }}
+        />
+      </div>
+    );
+  };
+  const renderEmailInput = () => {
+    const validationResult = registerController.validateEmail(email);
+    let borderStyle: React.CSSProperties = {
+      border: "1px solid black",
+    };
+
+    if (email.length === 0) {
+      borderStyle = {
+        border: "1px solid black",
+      };
+    } else if (validationResult.isValid === false) {
+      borderStyle = {
+        ...borderStyle,
+        borderColor: "red",
+      };
+    } else {
+      borderStyle = {
+        ...borderStyle,
+        borderColor: "lime",
+      };
+    }
+
+    return (
+      <div className={Styles.registerInputBox}>
+        <p style={{ marginRight: "22.5%" }}>Email</p>
+        <input
+          type="email"
+          placeholder="Input Your Email"
+          name="email"
+          autoComplete="off"
+          style={borderStyle}
+          value={email}
+          onChange={(ev) => {
+            inputHandler(ev);
+          }}
+        />
+      </div>
+    );
+  };
+  const renderPasswordInput = () => {
+    const validationResult = registerController.validatePassword(password);
+    let borderStyle: React.CSSProperties = {
+      border: "1px solid black",
+    };
+
+    if (password.length === 0) {
+      borderStyle = {
+        border: "1px solid black",
+      };
+    } else if (validationResult.isValid === false) {
+      borderStyle = {
+        ...borderStyle,
+        borderColor: "red",
+      };
+    } else {
+      borderStyle = {
+        ...borderStyle,
+        borderColor: "lime",
+      };
+    }
+
+    return (
+      <div className={Styles.registerInputBox}>
+        <p>Passworrd</p>
+        <input
+          type="password"
+          placeholder="Input Your Secret Password"
+          name="password"
+          style={borderStyle}
+          value={password}
+          onChange={(ev) => {
+            inputHandler(ev);
+          }}
+        />
+      </div>
+    );
+  };
+
   return (
     <main id="register-main-container">
       <div className={Styles.registerContainer}>
         <form className={Styles.registerForm}>
-          <div className={Styles.registerInputBox}>
-            <p>Username</p>
-            <input
-              type="text"
-              placeholder="Input Your Username"
-              name="username"
-              autoComplete="off"
-              value={username}
-              onChange={(ev) => {
-                inputHandler(ev);
-              }}
-            />
-          </div>
-          <div className={Styles.registerInputBox}>
-            <p>Nickname</p>
-            <input
-              type="text"
-              placeholder="Input Your Nickname"
-              name="nickname"
-              autoComplete="off"
-              value={nickname}
-              onChange={(ev) => {
-                inputHandler(ev);
-              }}
-            />
-          </div>
-          <div className={Styles.registerInputBox}>
-            <p style={{ marginRight: "22.5%" }}>Email</p>
-            <input
-              type="email"
-              placeholder="Input Your Email"
-              name="email"
-              autoComplete="off"
-              value={email}
-              onChange={(ev) => {
-                inputHandler(ev);
-              }}
-            />
-          </div>
-          <div className={Styles.registerInputBox}>
-            <p>Passworrd</p>
-            <input
-              type="password"
-              placeholder="Input Your Secret Password"
-              name="password"
-              value={password}
-              onChange={(ev) => {
-                inputHandler(ev);
-              }}
-            />
-          </div>
+          {renderUsernameInput()}
+          {renderNicknameInput()}
+          {renderEmailInput()}
+          {renderPasswordInput()}
           <div
             className={`${Styles.registerInputBox} ${Styles.birthdayContainer}`}
           >

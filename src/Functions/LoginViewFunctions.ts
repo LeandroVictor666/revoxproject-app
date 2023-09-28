@@ -1,18 +1,42 @@
 import LoginController from "../Controllers/Login/LoginController";
 import LoginAccountDto from "../DTO/LoginAccountDto";
-
+import { showModal } from "../Redux/Modal.Redux";
+import ModalProps from "../Types/ModalProps";
+import ModalType from "../Types/ModalType.enum";
+import { ViewsEnum } from "../Types/Views.enum";
+import * as ReduxToolkit from "@reduxjs/toolkit";
 export const callToRegisterFunction = async (
-  username: string,
-  password: string
+  loginDto: LoginAccountDto,
+  dispatch: ReduxToolkit.Dispatch<ReduxToolkit.AnyAction>
 ) => {
-  const loginDto = new LoginAccountDto(username, password);
   const loginController = new LoginController();
   await loginController
     .loginUser(loginDto)
-    .then((response) => {
-      console.log(`response: ${response}`);
+    .then(() => {
+      const payload: ModalProps = {
+        actualPage: ViewsEnum.LoginView,
+        message: "Logged In Successfully",
+        modalType: ModalType.Success,
+        title: "Login",
+        isActive: true,
+      };
+      dispatch(showModal(payload));
     })
     .catch((error) => {
-      console.log(`error: ${error}`);
+      let message;
+      if (error.responseFrom === "server") {
+        message = error.response;
+      } else {
+        message = error.reason;
+      }
+
+      const payload: ModalProps = {
+        actualPage: ViewsEnum.LoginView,
+        message: message,
+        modalType: ModalType.Failure,
+        title: "Login",
+        isActive: true,
+      };
+      dispatch(showModal(payload));
     });
 };
