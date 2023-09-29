@@ -1,0 +1,63 @@
+@media screen and (min-width: 1280px) {
+  .loginContainer {
+    .loginForm {
+      width: 55vw;
+      .loginInputBox {
+        justify-content: center;
+        align-items: center;
+        p {
+          align-self: flex-start;
+          margin-left: 24.5%;
+        }
+        input {
+          width: 50%;
+        }
+      }
+      .loginControls {
+        .loginBtn {
+          width: 35%;
+        }
+        .horizontalLine {
+          width: 45%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .loginContainer {
+    .loginForm {
+      color: white;
+
+      .loginInputBox {
+        justify-content: center;
+        align-items: center;
+
+        p {
+          align-self: flex-start;
+          margin-left: 14%;
+        }
+
+        input {
+          width: 70%;
+        }
+        input:hover {
+          background-color: #949494;
+        }
+      }
+      .loginControls {
+        width: 100%;
+        button {
+          cursor: pointer;
+        }
+        .loginBtn {
+          width: 50%;
+        }
+        .horizontalLine {
+          width: 80%;
+        }
+      }
+    }
+  }
+}

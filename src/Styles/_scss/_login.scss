@@ -1,4 +1,5 @@
 .loginContainer {
+  margin-top: $actualHeaderHeight + 128px;
   display: flex;
   width: 100vw;
   height: 50vh;
@@ -7,29 +8,26 @@
   .loginForm {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: $publicationCardColor;
-    width: max-content;
-    padding: 64px;
-    min-width: 50%;
-    max-width: 50%;
+    padding: 32px;
+    width: 75%;
     color: white;
-
     .loginInputBox {
-      width: 60%;
+      padding: 8px;
+      width: 90%;
       display: flex;
-      flex-direction: column;
       align-items: center;
+      flex-direction: column;
       margin-bottom: 32px;
       p {
-        display: flex;
-        margin-right: 38.3%;
+        align-self: flex-start;
+        margin-bottom: 4px;
         font-size: 14px;
         cursor: default;
       }
       input {
-        width: 50%;
+        width: 100%;
         height: 25px;
         text-align: center;
         align-items: center;
@@ -43,27 +41,26 @@
         background-color: #949494;
       }
     }
-
     .loginControls {
       margin-top: 16px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      width: 50%;
+      width: 100%;
       button {
         cursor: pointer;
       }
       .loginBtn {
-        width: 50%;
+        width: 65%;
         color: #000;
+        outline: 1px solid black;
+        border: none;
         text-align: center;
         font-size: 18px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
         padding: 8px;
-        border: none;
       }
       .loginBtn:hover {
         background-color: #313131;
@@ -97,8 +94,8 @@
         text-decoration: underline;
       }
       .horizontalLine {
-        margin-top: 32px;
-        width: 55%;
+        margin-top: 16px;
+        width: 80%;
       }
 
       .bottomControls {
