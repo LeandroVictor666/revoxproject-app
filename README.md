@@ -62,10 +62,10 @@ Atualmente, estou fazendo a responsividade do website, gosto de fazer projetos p
 
 ### Status (Responsividade)
 
-Homepage 🟢
-Register 🟢
-Login 🔴
-Header 🔴
+Homepage 🟢 <br>
+Register 🟢 <br>
+Login 🔴 <br>
+Header 🔴 <br>
 
 ---
 
