@@ -60,9 +60,18 @@ Atualmente, estou fazendo a responsividade do website, gosto de fazer projetos p
 
 ---
 
+### Status (Responsividade)
+
+Homepage 🟢
+Register 🟢
+Login 🔴
+Header 🔴
+
+---
+
 ## Screenshots 📸
 
-### Pagina Principal
+### Homepage-View
 
 ### 320px
 
@@ -76,6 +85,34 @@ Atualmente, estou fazendo a responsividade do website, gosto de fazer projetos p
 
 ![mainpage_responsive](screenshots/mainpage_nest_hub.png?raw=true "Main Page Responsiviness In Nest Hub (Tablet)")
 
-### Nest Hub Max (Tela do tamanho de um desktop)
+### Nest Hub Max (Tablet Largo)
 
 ![mainpage_responsive](screenshots/mainpage_nest_hub_max.png?raw=true "Main Page Responsiviness In Nest Hub (Tablet/Desktop)")
+
+### Desktop (1920x1080)
+
+![mainpage_responsive](screenshots/mainpage_desktop.png?raw=true "Main Page Responsiviness In Desktop (Desktop)")
+
+---
+
+## Register-View
+
+### 320px
+
+![loginpage_responsive](screenshots/login_page_320px.png?raw=true "Login Page Responsiviness In Iphone 6/7/8")
+
+### Iphone 6/7/8
+
+![loginpage_responsive](screenshots/login_page_iphone678.png?raw=true "Login Page Responsiviness In Iphone 6/7/8")
+
+### Nest Hub (Tablet)
+
+![loginpage_responsive](screenshots/login_page_nest_hub.png?raw=true "Login Page Responsiviness In Nest Hub (Tablet)")
+
+### Nest Hub Max (Tablet Largo)
+
+![loginpage_responsive](screenshots/login_page_nest_hub_max.png?raw=true "Login Page Responsiviness In Nest Hub Max (Large Tablet)")
+
+### Desktop (1920x1080)
+
+![loginpage_responsive](screenshots/login_page_desktop.png?raw=true "Login Page Responsiviness In Nest Hub Max (Large Tablet)")

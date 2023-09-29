@@ -1,0 +1,56 @@
+//Desktop
+@media screen and (min-width: 1280px) {
+  .registerContainer {
+    .registerForm {
+      width: 70%;
+      .registerInputBox {
+        width: 25%;
+      }
+      .birthdayContainer {
+        p {
+          margin-left: 1.8%;
+        }
+        .selectsContainer {
+          flex-direction: row;
+          width: 95%;
+        }
+        select {
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .registerContainer {
+    .registerForm {
+      .registerInputBox {
+        width: 50%;
+      }
+      .birthdayContainer {
+        p {
+          margin-left: 1.8%;
+        }
+        .selectsContainer {
+          flex-direction: row;
+          width: 95%;
+        }
+        select {
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .registerContainer {
+    .registerForm {
+      .registerInputBox {
+        width: 50%;
+      }
+      .birthdayContainer {
+        width: 50%;
+      }
+    }
+  }
+}
