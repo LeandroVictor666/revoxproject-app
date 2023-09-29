@@ -1,0 +1,83 @@
+@use "sass:math";
+
+//Desktop.
+@media screen and (min-width: 1280px) {
+  .publicationCard {
+    padding: 32px 32px 16px 32px;
+    max-width: $publicationMaxWidthDesktop;
+    min-width: #{math.div($publicationMaxWidthDesktop, 2)};
+    header {
+      img {
+        width: $pfpMaxWidthDesktop;
+        height: $pfpMaxHeightDesktop;
+      }
+      .authorUsername {
+        margin-top: 16px;
+        font-size: 16px;
+      }
+      .publicationDate {
+        font-size: 14px;
+      }
+    }
+    .lineContainerFixer {
+      margin-top: 32px;
+    }
+    main {
+      margin-top: 32px;
+    }
+    .publicationFooter {
+      margin-top: 32px;
+      border-radius: 16px;
+      padding: 16px;
+      width: fit-content;
+      .publicationControl {
+        border-radius: 6px;
+        margin-right: 32px;
+        margin-left: 32px;
+        svg {
+          margin-top: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .publicationCard {
+    main {
+      margin-top: 32px;
+    }
+
+    .publicationOrn {
+      margin-top: 32px;
+      width: 250px;
+    }
+    .publicationFooter {
+      margin-top: 32px;
+      .publicationControl {
+        span {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 1023px) {
+  .publicationCard {
+    .lineContainerFixer {
+      margin-top: 16px;
+      margin-left: 50%;
+      transform: translate(-50%);
+      width: 55%;
+    }
+    .publicationFooter {
+      padding: 16px;
+      .publicationControl {
+        cursor: pointer;
+
+        padding: 2px 8px;
+        border-radius: 6px;
+      }
+    }
+  }
+}

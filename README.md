@@ -57,5 +57,25 @@ Nesse projeto estou seguindo a arquitetura TDD e aplicando conceitos de Clean-Co
 # Status Do Projeto
 
 Atualmente, estou fazendo a responsividade do website, gosto de fazer projetos por etapas, fiz simulações de ambientes (server lento para enviar resposta da api, entre outras coisas), modal, erros, sucessos, antes de entrar na api do projeto, irei finalizar a responsividade, com o passar do desenvolvimento, irei liberar screenshots, meu plano para o design na verdade é refazer o css do projeto, começando com o conceito mobile-first (eu acho bem melhor, mais fácil e tranquilo para desenvolver dessa maneira, MUITO melhor adaptar coisas pequenas para grandes, do que grandes para pequenas.)
+
+---
+
 ## Screenshots 📸
-![Alt text](screenshots/screenshot_01.png?raw=true "Optional Title")
+
+### Pagina Principal
+
+### 320px
+
+![mainpage_responsive](screenshots/screenshot_01.png?raw=true "Main Page Responsiviness")
+
+#### Iphone 6/7/8
+
+![mainpage_responsive](screenshots/mainpage_iphone_789.png?raw=true "Main Page Responsiviness In Iphone 6/7/8")
+
+### Nest Hub (Tablet)
+
+![mainpage_responsive](screenshots/mainpage_nest_hub.png?raw=true "Main Page Responsiviness In Nest Hub (Tablet)")
+
+### Nest Hub Max (Tela do tamanho de um desktop)
+
+![mainpage_responsive](screenshots/mainpage_nest_hub_max.png?raw=true "Main Page Responsiviness In Nest Hub (Tablet/Desktop)")

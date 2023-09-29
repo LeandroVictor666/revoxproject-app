@@ -178,7 +178,7 @@ const RegisterView = (): JSX.Element => {
 
     return (
       <div className={Styles.registerInputBox}>
-        <p style={{ marginRight: "22.5%" }}>Email</p>
+        <p id={Styles.emailLabel}>Email</p>
         <input
           type="email"
           placeholder="Input Your Email"

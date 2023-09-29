@@ -49,15 +49,9 @@
   }
   .publicationOrn:hover {
     path {
-      width: 30px;
+      stroke: rgb(255, 255, 255);
     }
   }
-
-  .publicationStatistic {
-    p {
-    }
-  }
-
   .publicationFooter {
     display: flex;
     justify-content: space-around;
