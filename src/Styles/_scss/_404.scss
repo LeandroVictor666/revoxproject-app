@@ -1,0 +1,17 @@
+.NotFoundMain {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .bodyContent {
+    font-size: 48px;
+    font-family: voguefont;
+    color: white;
+    margin-bottom: 50px;
+    h1 {
+      padding: 8px;
+      box-shadow: 4px 4px 16px 6px rgba(44, 44, 44, 0.384);
+    }
+  }
+}
