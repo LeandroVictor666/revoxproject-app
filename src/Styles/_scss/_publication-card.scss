@@ -60,8 +60,8 @@
 
   .publicationFooter {
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
     margin-top: 16px;
     border-radius: 16px;
     padding: 16px;
@@ -73,8 +73,8 @@
     .publicationControl {
       cursor: pointer;
       display: flex;
+      justify-content: space-around;
       align-items: center;
-      justify-content: center;
       padding: 2px 8px;
       border-radius: 6px;
       span {
