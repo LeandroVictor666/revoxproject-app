@@ -11,7 +11,7 @@
   height: $headerHeightDesktop;
   $actualHeaderHeight: $headerHeightDesktop;
   .containerFixer {
-    padding: 0 16px;
+    padding: 0 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,4 +44,3 @@
     }
   }
 }
-

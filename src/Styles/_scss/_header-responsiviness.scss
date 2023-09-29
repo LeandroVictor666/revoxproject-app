@@ -1,0 +1,17 @@
+@media screen and (min-width: 1280px) {
+  .pageHeader {
+    .containerFixer {
+      padding: 0 64px;
+      .firstSection {
+        font-size: 28px;
+      }
+      .lastSection {
+        nav {
+          a {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
