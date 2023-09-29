@@ -21,6 +21,10 @@ const AppRoutes = ReactRouter.createBrowserRouter([
     path: "*",
     element: <NotFound />,
   },
+  {
+    path: "/profile/:profileId",
+    element: 
+  }
 ]);
 
 export default AppRoutes;
