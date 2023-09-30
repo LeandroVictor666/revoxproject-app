@@ -21,3 +21,4 @@ export const Dto = RegisterAccountDtoModule;
 
 import RegisterControllerModule from "../Controllers/Register/RegisterController";
 export const Controller = RegisterControllerModule;
+

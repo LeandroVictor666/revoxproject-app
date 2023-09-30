@@ -1,5 +1,5 @@
-import RegisterController from "../Controllers/Register/RegisterController";
 import RegisterAccountDto from "../DTO/RegisterAccountDto";
+import * as RegisterModule from "../Modules/Register.Module";
 import ServerResponseDto from "../DTO/ServerResponseDto";
 import { showModal } from "../Redux/Modal.Redux";
 import InputValidationResponse from "../Types/InputValidationResponse";
@@ -14,12 +14,11 @@ export const changeRegisterBtnBorderColor = (newColor: string) => {
     registerBtn.style.borderColor = newColor;
   }
 };
-
 export const callToRegisterFunction = async (
   accountData: RegisterAccountDto,
   dispatch: ReduxToolkit.Dispatch<ReduxToolkit.AnyAction>
 ) => {
-  const registerController = new RegisterController();
+  const registerController = new RegisterModule.Controller();
   changeRegisterBtnBorderColor("#fff");
   await registerController
     .registerUser(accountData)

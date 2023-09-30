@@ -1,15 +1,18 @@
-import LoginController from "../Controllers/Login/LoginController";
+import * as LoginModule from "../Modules/Login.Module";
 import LoginAccountDto from "../DTO/LoginAccountDto";
+
 import { showModal } from "../Redux/Modal.Redux";
 import ModalProps from "../Types/ModalProps";
 import ModalType from "../Types/ModalType.enum";
+
 import { ViewsEnum } from "../Types/Views.enum";
 import * as ReduxToolkit from "@reduxjs/toolkit";
+
 export const callToRegisterFunction = async (
   loginDto: LoginAccountDto,
   dispatch: ReduxToolkit.Dispatch<ReduxToolkit.AnyAction>
 ) => {
-  const loginController = new LoginController();
+  const loginController = new LoginModule.Controller();
   await loginController
     .loginUser(loginDto)
     .then(() => {

@@ -1,7 +1,7 @@
 import Styles from "../../Styles/app.module.css";
 import * as React from "react";
 import * as ReactRedux from "react-redux";
-import * as LoginViewFunctions from "../../Functions/LoginViewFunctions";
+import * as LoginModule from "../../Modules/Login.Module";
 const LoginView = (): JSX.Element => {
   const [username, setUsername] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
@@ -21,7 +21,7 @@ const LoginView = (): JSX.Element => {
   };
   const callToLoginFn = (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
-    LoginViewFunctions.callToRegisterFunction(
+    LoginModule.ViewFunctions.callToRegisterFunction(
       { username, password },
       dispatcher
     );
