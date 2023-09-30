@@ -3,12 +3,13 @@
   display: flex;
   background-color: #141414;
   justify-content: space-between;
+  margin-bottom: 32px;
   align-items: center;
   z-index: 9999;
   position: fixed;
   top: 0;
   width: 100vw;
-  height: $headerHeightDesktop;
+  height: 90px;
   $actualHeaderHeight: $headerHeightDesktop;
   .containerFixer {
     padding: 0 32px;
