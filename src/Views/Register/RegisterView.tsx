@@ -1,21 +1,17 @@
-import Styles from "../../Styles/app.module.css";
 import * as React from "react";
-import MonthsEnum from "../../Types/Months.enum";
-import renderYearsComponent from "./RegisterYearsComponent";
-import * as AccountRules from "../../Rules/AccountRules";
-import renderDaysComponent from "./RenderDaysComponent";
-import RenderMonthsComponent from "./RenderMonthsComponent";
-import RegisterAccountDto from "../../DTO/RegisterAccountDto";
 import * as ReactRedux from "react-redux";
-import * as RegisterViewFunctions from "../../Functions/RegisterViewFunctions";
-import RegisterController from "../../Controllers/Register/RegisterController";
+import Styles from "../../Styles/app.module.css";
+import * as AccountRules from "../../Rules/AccountRules";
+import * as RegisterModule from "../../Modules/Register.Module";
 
 const RegisterView = (): JSX.Element => {
   const [username, setUsername] = React.useState<string>("");
   const [nickname, setNickname] = React.useState<string>("");
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
-  const [month, setMonth] = React.useState<string>(MonthsEnum.January);
+  const [month, setMonth] = React.useState<string>(
+    RegisterModule.MonthsEnum.January
+  );
   const [day, setDay] = React.useState<number>(1);
   const [year, setYear] = React.useState<number>(
     AccountRules.BIRTHDAY_ACTUAL_YEAR
@@ -61,7 +57,7 @@ const RegisterView = (): JSX.Element => {
     ev: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     ev.preventDefault();
-    const accountData = new RegisterAccountDto(
+    const accountData = new RegisterModule.Dto(
       username,
       nickname,
       email,
@@ -70,12 +66,15 @@ const RegisterView = (): JSX.Element => {
       month,
       year
     );
-    await RegisterViewFunctions.callToRegisterFunction(accountData, dispatch);
+    await RegisterModule.ViewFunctions.callToRegisterFunction(
+      accountData,
+      dispatch
+    );
     return;
   };
 
   //é melhor instanciar um unico objeto (RegisterController), do que criar 1 instancia a cada vez que a função seja renderizada pelo react
-  const registerController = new RegisterController();
+  const registerController = new RegisterModule.Controller();
 
   const renderUsernameInput = () => {
     const validationResult = registerController.validateUsername(username);
@@ -253,7 +252,7 @@ const RegisterView = (): JSX.Element => {
                   inputHandler(ev);
                 }}
               >
-                {RenderMonthsComponent()}
+                {RegisterModule.MonthsInputComponent()}
               </select>
               <select
                 id="days"
@@ -263,7 +262,7 @@ const RegisterView = (): JSX.Element => {
                   inputHandler(ev);
                 }}
               >
-                {renderDaysComponent()}
+                {RegisterModule.DaysInputComponent()}
               </select>
               <select
                 id="years"
@@ -273,7 +272,7 @@ const RegisterView = (): JSX.Element => {
                   inputHandler(ev);
                 }}
               >
-                {renderYearsComponent()}
+                {RegisterModule.YearsInputComponent()}
               </select>
             </div>
           </div>
