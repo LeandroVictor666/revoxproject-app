@@ -3,7 +3,7 @@ import HomePageView from "../Views/Home/HomePageView";
 import * as LoginModule from "../Modules/Login.Module";
 import * as RegisterModule from "../Modules/Register.Module";
 import NotFound from "../Views/404/NotFound";
-import ProfileView from "../Views/Profile/Profile";
+import * as ProfileModule from "../Modules/Profile.module";
 
 const AppRoutes = ReactRouter.createBrowserRouter([
   {
@@ -24,7 +24,7 @@ const AppRoutes = ReactRouter.createBrowserRouter([
   },
   {
     path: "/profile/:profileId",
-    element: <ProfileView />,
+    element: <ProfileModule.View />,
   },
 ]);
 

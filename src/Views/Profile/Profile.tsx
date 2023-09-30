@@ -1,11 +1,9 @@
+import * as ProfileModule from "../../Modules/Profile.module";
 import { useParams } from "react-router-dom";
 import ProfileDto from "../../DTO/ProfileDto";
 import Styles from "../../Styles/app.module.css";
-import ProfileHeaderComponent from "./ProfileHeader";
 import HorizontalLine from "../../Components/HorizontalLine/HorizontalLine";
-import ProfileConnectionsComponent from "./ProfileConnections";
-import ProfilePublicationsComponent from "./ProfilePublications";
-import ProfileBiographyComponent from "./ProfileBiography";
+
 const ProfileView = (): JSX.Element => {
   const { profileId } = useParams();
   console.log(typeof profileId);
@@ -32,18 +30,20 @@ const ProfileView = (): JSX.Element => {
   return (
     <main className={Styles.profilePageMain}>
       <div className={Styles.profileViewContainer}>
-        <ProfileHeaderComponent profileDto={fakeProfileRetrievedByApi} />
+        <ProfileModule.HeaderComponent profileDto={fakeProfileRetrievedByApi} />
         <HorizontalLine idName={Styles.headerHorizontalLine}></HorizontalLine>
         <body className={Styles.profileBody}>
-          <ProfileBiographyComponent
+          <ProfileModule.BiographyComponent
             userBiography={fakeProfileRetrievedByApi.biography}
           />
           <HorizontalLine
             idName={Styles.profileConnectionsHorizontalLine}
           ></HorizontalLine>
-          <ProfileConnectionsComponent profileDto={fakeProfileRetrievedByApi} />
+          <ProfileModule.ConnectionsComponent
+            profileDto={fakeProfileRetrievedByApi}
+          />
           <HorizontalLine></HorizontalLine>
-          <ProfilePublicationsComponent />
+          <ProfileModule.PublicationsComponent />
         </body>
       </div>
     </main>
