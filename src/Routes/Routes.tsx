@@ -3,6 +3,7 @@ import HomePageView from "../Views/Home/HomePageView";
 import LoginView from "../Views/Login/LoginView";
 import RegisterView from "../Views/Register/RegisterView";
 import NotFound from "../Views/404/NotFound";
+import ProfileView from "../Views/Profile/Profile";
 
 const AppRoutes = ReactRouter.createBrowserRouter([
   {
@@ -23,8 +24,8 @@ const AppRoutes = ReactRouter.createBrowserRouter([
   },
   {
     path: "/profile/:profileId",
-    element: 
-  }
+    element: <ProfileView />,
+  },
 ]);
 
 export default AppRoutes;

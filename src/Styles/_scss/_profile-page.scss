@@ -1,0 +1,102 @@
+.profilePageMain {
+  margin-top: $actualHeaderHeight + 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  .profileViewContainer {
+    color: white;
+    border-radius: 6px;
+    padding: 16px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #383838;
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 100%;
+      }
+      #profileNickname {
+        font-size: 22px;
+        margin-top: 8px;
+      }
+      #profileUsername {
+        margin-top: 8px;
+        color: #808080;
+      }
+      #profileLocation {
+        margin-top: 32px;
+        font-size: 12px;
+        align-self: flex-end;
+      }
+    }
+    #headerHorizontalLine {
+      margin-top: 8px;
+    }
+
+    .horizontalLine {
+      margin-top: 32px;
+      margin-bottom: 32px;
+      background: #212121;
+      width: 95%;
+    }
+
+    .profileBody {
+      background-color: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 16px;
+      h1 {
+        font-size: 24px;
+      }
+      .biographyBox {
+        margin-top: 16px;
+        text-align: center;
+        padding: 8px;
+        border: 1px solid black;
+        border-radius: 6px;
+      }
+      #profileConnectionsHorizontalLine {
+        width: 65%;
+      }
+      .profileConnections {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        #profileConnectionsLabel {
+          text-align: center;
+          font-size: 20px;
+        }
+        .connectionsContainer {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          .socialBox {
+            padding: 4px;
+            margin-top: 8px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            p {
+              margin-left: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

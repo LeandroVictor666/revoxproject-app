@@ -5,7 +5,7 @@ export default class ProfileDto {
   id: number;
   biography: string;
   location: string;
-  socialMedias: ProfileSocialMedias;
+  socialMedias?: ProfileSocialMedias;
 
   constructor(
     username: string,
