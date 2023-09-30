@@ -1,8 +1,11 @@
 import { useParams } from "react-router-dom";
 import ProfileDto from "../../DTO/ProfileDto";
 import Styles from "../../Styles/app.module.css";
-import DiscordIcon from "../../assets/icons/DiscordIcon";
-import GithubIcon from "../../assets/icons/GithubIcon";
+import ProfileHeaderComponent from "./ProfileHeader";
+import HorizontalLine from "../../Components/HorizontalLine/HorizontalLine";
+import ProfileConnectionsComponent from "./ProfileConnections";
+import ProfilePublicationsComponent from "./ProfilePublications";
+import ProfileBiographyComponent from "./ProfileBiography";
 const ProfileView = (): JSX.Element => {
   const { profileId } = useParams();
   console.log(typeof profileId);
@@ -29,52 +32,18 @@ const ProfileView = (): JSX.Element => {
   return (
     <main className={Styles.profilePageMain}>
       <div className={Styles.profileViewContainer}>
-        <header>
-          <img
-            src={`../Assets/UsersPfp/user-${fakeProfileRetrievedByApi.id}.jpeg`}
-          ></img>
-          <p id={Styles.profileNickname}>
-            {fakeProfileRetrievedByApi.nickname}
-          </p>
-          <p id={Styles.profileUsername}>
-            {fakeProfileRetrievedByApi.username}
-          </p>
-          <p id={Styles.profileLocation}>
-            {fakeProfileRetrievedByApi.location}
-          </p>
-        </header>
-        <div
-          className={Styles.horizontalLine}
-          id={Styles.headerHorizontalLine}
-        ></div>
+        <ProfileHeaderComponent profileDto={fakeProfileRetrievedByApi} />
+        <HorizontalLine idName={Styles.headerHorizontalLine}></HorizontalLine>
         <body className={Styles.profileBody}>
-          <h1>Biography</h1>
-          <div className={Styles.biographyBox}>
-            <p>{fakeProfileRetrievedByApi.biography}</p>
-          </div>
-          <div
-            className={Styles.horizontalLine}
-            id={Styles.profileConnectionsHorizontalLine}
-          ></div>
-          <div className={Styles.profileConnections}>
-            <p id={Styles.profileConnectionsLabel}>
-              {fakeProfileRetrievedByApi.nickname} Connections:{" "}
-            </p>
-            <div className={Styles.connectionsContainer}>
-              <div className={Styles.socialBox}>
-                <DiscordIcon></DiscordIcon>
-                <p>{fakeProfileRetrievedByApi.socialMedias?.discord?.id}</p>
-              </div>
-              <div className={Styles.socialBox}>
-                <GithubIcon></GithubIcon>
-                <p>{fakeProfileRetrievedByApi.socialMedias?.github?.id}</p>
-              </div>
-            </div>
-          </div>
-          <div className={Styles.horizontalLine}></div>
-          <div className={Styles.profilePublications}>
-            <h2>This user has not made any posts</h2>
-          </div>
+          <ProfileBiographyComponent
+            userBiography={fakeProfileRetrievedByApi.biography}
+          />
+          <HorizontalLine
+            idName={Styles.profileConnectionsHorizontalLine}
+          ></HorizontalLine>
+          <ProfileConnectionsComponent profileDto={fakeProfileRetrievedByApi} />
+          <HorizontalLine></HorizontalLine>
+          <ProfilePublicationsComponent />
         </body>
       </div>
     </main>
