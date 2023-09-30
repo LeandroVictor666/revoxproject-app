@@ -1,13 +1,13 @@
 import LoginAccountDto from "../../DTO/LoginAccountDto";
 import ServerResponseDto from "../../DTO/ServerResponseDto";
 import ErrorMessagerService from "../../Services/ErrorMesseger.Service";
-import LoginService from "../../Services/Login.Service";
+import * as LoginModule from "../../Modules/Login.Module";
 import InputEnums from "../../Types/InputEnums.enum";
 import InputValidationResponse from "../../Types/InputValidationResponse";
 import ServerErrorsEnum from "../../Types/ServerErrors.enum";
 
 export default class LoginController {
-  private loginService = new LoginService();
+  private loginService = new LoginModule.Service();
   private messegerService = new ErrorMessagerService();
 
   validateUsername(username: string): InputValidationResponse {

@@ -9,3 +9,6 @@ export const Dto = LoginAccountDtoModule;
 
 import LoginController from "../Controllers/Login/LoginController";
 export const Controller = LoginController;
+
+import LoginService from "../Services/Login.Service";
+export const Service = LoginService;

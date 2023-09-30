@@ -19,6 +19,9 @@ export const ViewFunctions = RegisterViewFunctionsModule;
 import RegisterAccountDtoModule from "../DTO/RegisterAccountDto";
 export const Dto = RegisterAccountDtoModule;
 
+
+import RegisterService from "../Services/Register.Service";
+export const Service = RegisterService;
+
 import RegisterControllerModule from "../Controllers/Register/RegisterController";
 export const Controller = RegisterControllerModule;
-

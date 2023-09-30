@@ -1,6 +1,6 @@
+import * as RegisterModule from "../../Modules/Register.Module";
 import RegisterInterface from "../../Interfaces/Register.Interface";
 import ErrorMessagerService from "../../Services/ErrorMesseger.Service";
-import RegisterService from "../../Services/Register.Service";
 import InputEnums from "../../Types/InputEnums.enum";
 import InputValidationResponse from "../../Types/InputValidationResponse";
 import InputValidationResponseEnums from "../../Types/InputValidationErrorObject.enum";
@@ -9,7 +9,7 @@ import RegisterAccountDto from "../../DTO/RegisterAccountDto";
 import ServerErrorsEnum from "../../Types/ServerErrors.enum";
 
 export default class RegisterController implements RegisterInterface {
-  registerService = new RegisterService();
+  registerService = new RegisterModule.Service();
   errorMessegerService = new ErrorMessagerService();
   validateUsername(username: string): InputValidationResponse {
     const validationResult = this.registerService.validateUsername(username);
