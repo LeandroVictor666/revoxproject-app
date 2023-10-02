@@ -4,7 +4,7 @@ import ErrorMessagerService from "../../Services/ErrorMesseger.Service";
 import * as LoginModule from "../../Modules/Login.Module";
 import InputEnums from "../../Types/InputEnums.enum";
 import InputValidationResponse from "../../Types/InputValidationResponse";
-import ServerErrorsEnum from "../../Types/ServerErrors.enum";
+import ResponseStatus from "../../Types/ServerErrors.enum";
 
 export default class LoginController {
   private loginService = new LoginModule.Service();
@@ -53,7 +53,7 @@ export default class LoginController {
     const promiseObject: ServerResponseDto = {
       isError: false,
       response: `user: ${loginAccountDto.password}`,
-      responseType: ServerErrorsEnum.Success,
+      responseStatus: ResponseStatus.Success,
       responseFrom: "server",
     };
     return Promise.resolve(promiseObject);

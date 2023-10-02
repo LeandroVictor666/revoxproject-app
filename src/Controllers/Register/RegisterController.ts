@@ -6,7 +6,7 @@ import InputValidationResponse from "../../Types/InputValidationResponse";
 import InputValidationResponseEnums from "../../Types/InputValidationErrorObject.enum";
 import ServerResponseDto from "../../DTO/ServerResponseDto";
 import RegisterAccountDto from "../../DTO/RegisterAccountDto";
-import ServerErrorsEnum from "../../Types/ServerErrors.enum";
+import ResponseStatus from "../../Types/ServerErrors.enum";
 
 export default class RegisterController implements RegisterInterface {
   registerService = new RegisterModule.Service();
@@ -127,7 +127,7 @@ export default class RegisterController implements RegisterInterface {
       isError: false,
       response: "",
       responseFrom: "server",
-      responseType: ServerErrorsEnum.Success,
+      responseStatus: ResponseStatus.Success,
     };
 
     return Promise.resolve(responseObject);
