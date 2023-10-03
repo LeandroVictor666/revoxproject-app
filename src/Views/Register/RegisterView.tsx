@@ -3,15 +3,15 @@ import * as ReactRedux from "react-redux";
 import Styles from "../../Styles/app.module.css";
 import * as AccountRules from "../../Rules/AccountRules";
 import * as RegisterModule from "../../Modules/Register.Module";
+import MonthsEnum from "../../Types/Months.enum";
+import DateController from "../../Controllers/Date/DateController";
 
 const RegisterView = (): JSX.Element => {
   const [username, setUsername] = React.useState<string>("");
   const [nickname, setNickname] = React.useState<string>("");
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
-  const [month, setMonth] = React.useState<string>(
-    RegisterModule.MonthsEnum.January
-  );
+  const [month, setMonth] = React.useState<MonthsEnum>(MonthsEnum.January);
   const [day, setDay] = React.useState<number>(1);
   const [year, setYear] = React.useState<number>(
     AccountRules.BIRTHDAY_ACTUAL_YEAR
@@ -40,7 +40,7 @@ const RegisterView = (): JSX.Element => {
         break;
       }
       case "birthdayMonth": {
-        setMonth(ev.target.value);
+        setMonth(ev.target.value as MonthsEnum);
         break;
       }
       case "birthdayDay": {
@@ -57,14 +57,16 @@ const RegisterView = (): JSX.Element => {
     ev: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     ev.preventDefault();
+    const dateController = new DateController();
+    const monthValue = dateController.getMonthNumber(month);
+    const birthday = new Date(`
+    ${year}-${monthValue}-${day}`);
     const accountData = new RegisterModule.Dto(
       username,
       nickname,
       email,
       password,
-      day,
-      month,
-      year
+      birthday
     );
     await RegisterModule.ViewFunctions.callToRegisterFunction(
       accountData,
