@@ -20,42 +20,55 @@ export const callToRegisterFunction = async (
 ) => {
   const registerController = new RegisterModule.Controller();
   changeRegisterBtnBorderColor("#fff");
-  await registerController
-    .registerUser(accountData)
-    .then((resp) => {
-      const responseObject = resp as ServerResponseDto;
-      const payload: ModalProps = {
-        actualPage: ViewsEnum.RegisterView,
-        message: responseObject.response,
-        title: "Successfully registered",
-        modalType: ModalType.Success,
-        isActive: true,
-      };
-      dispatch(showModal(payload));
-    })
-    .catch((err) => {
-      if (err.isValid !== undefined) {
-        const errorObject = err as InputValidationResponse;
-        if (errorObject.reason !== undefined) {
-          const payload: ModalProps = {
-            message: errorObject.reason,
-            modalType: ModalType.Failure,
-            title: "Register Failed",
-            isActive: true,
-            actualPage: ViewsEnum.RegisterView,
-          };
-          dispatch(showModal(payload));
-        }
-      } else {
-        const errorObject = err as ServerResponseDto;
+  try {
+    await registerController.registerUser(accountData).then((response) => {
+      const responseResult = response as ServerResponseDto;
+      if (responseResult.isError === true) {
         const payload: ModalProps = {
-          message: errorObject.response,
+          actualPage: ViewsEnum.RegisterView,
+          message: responseResult.response,
           title: "Register Failed",
           modalType: ModalType.Failure,
+          isActive: true,
+        };
+        dispatch(showModal(payload));
+      } else {
+        const payload: ModalProps = {
           actualPage: ViewsEnum.RegisterView,
+          message: responseResult.response,
+          title: "Successfully registered",
+          modalType: ModalType.Success,
+          isActive: true,
         };
         dispatch(showModal(payload));
       }
     });
+  } catch (error) {
+    const errorCheck = error as ServerResponseDto | InputValidationResponse;
+    if (errorCheck.responseFrom === "server") {
+      const serverResponse = error as ServerResponseDto;
+      const payload: ModalProps = {
+        message: serverResponse.response,
+        title: "Register Failed",
+        modalType: ModalType.Failure,
+        actualPage: ViewsEnum.RegisterView,
+        isActive: true,
+      };
+      dispatch(showModal(payload));
+    } else {
+      const clientResponse = error as InputValidationResponse;
+      if (clientResponse.reason !== undefined) {
+        const payload: ModalProps = {
+          message: clientResponse.reason,
+          modalType: ModalType.Failure,
+          title: "Register Failed",
+          actualPage: ViewsEnum.RegisterView,
+          isActive: true,
+        };
+        dispatch(showModal(payload));
+      }
+    }
+  }
   changeRegisterBtnBorderColor("#000");
+  return Promise.resolve();
 };
