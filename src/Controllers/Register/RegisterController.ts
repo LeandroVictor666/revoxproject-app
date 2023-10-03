@@ -158,18 +158,28 @@ export default class RegisterController implements RegisterInterface {
         birthday: accountData.birthday,
       }),
     };
-
+    let isToReject: boolean = false;
     const registerResult = await fetch(
       `${ClientEnviroment.API_URL}register/register`,
       configurations
     )
       .then((res) => {
         if (res.status <= 199 || res.status >= 300) {
-          return Promise.reject(res.json());
+          isToReject = true;
         }
         return res.json();
       })
       .then((response) => {
+        if (isToReject === true) {
+          const responseObject: ServerResponseDto = {
+            isError: true,
+            response: response.response,
+            responseFrom: response.responseFrom,
+            responseStatus: response.responseStatus,
+          };
+          return Promise.resolve(responseObject);
+        }
+
         return Promise.resolve(response);
       })
       .catch((error) => {
