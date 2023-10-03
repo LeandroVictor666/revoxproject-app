@@ -6,7 +6,7 @@ import InputValidationResponse from "../../Types/InputValidationResponse";
 import InputValidationResponseEnums from "../../Types/InputValidationErrorObject.enum";
 import ServerResponseDto from "../../DTO/ServerResponseDto";
 import RegisterAccountDto from "../../DTO/RegisterAccountDto";
-import ResponseStatus from "../../Types/ServerErrors.enum";
+import * as ClientEnviroment from "../../_ClientEnviroment/ClientEnviroment";
 
 export default class RegisterController implements RegisterInterface {
   registerService = new RegisterModule.Service();
@@ -70,14 +70,24 @@ export default class RegisterController implements RegisterInterface {
     };
   }
 
-  private async fakeAPIDelay(delay: number = 2500): Promise<boolean> {
-    return new Promise((resolve) => setTimeout(resolve, delay));
+  validateBirthday(birthday: Date): InputValidationResponse {
+    const validationResult = this.registerService.validateBirthday(birthday);
+    if (validationResult.isValid !== true) {
+      return this.errorMessegerService.dispatchInputValidationErrorMessage(
+        InputEnums.Birthday,
+        validationResult.errorCode
+      );
+    }
+    return {
+      isValid: true,
+      errorCode: InputValidationResponseEnums.Success,
+      responseFrom: "client",
+    };
   }
 
   async registerUser(
     accountData: RegisterAccountDto
   ): Promise<ServerResponseDto | InputValidationResponse> {
-    await this.fakeAPIDelay();
     const usernameValidationResult = this.validateUsername(
       accountData.username
     );
@@ -123,13 +133,49 @@ export default class RegisterController implements RegisterInterface {
       return Promise.reject(response);
     }
 
-    const responseObject: ServerResponseDto = {
-      isError: false,
-      response: "",
-      responseFrom: "server",
-      responseStatus: ResponseStatus.Success,
+    const birthdayValidationResult = this.validateBirthday(
+      accountData.birthday
+    );
+    if (birthdayValidationResult.isValid !== true) {
+      const response =
+        this.errorMessegerService.dispatchInputValidationErrorMessage(
+          InputEnums.Birthday,
+          birthdayValidationResult.errorCode
+        );
+      return Promise.reject(response);
+    }
+
+    const configurations: RequestInit = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: accountData.username,
+        nickname: accountData.nickname,
+        email: accountData.email,
+        password: accountData.password,
+        birthday: accountData.birthday,
+      }),
     };
 
-    return Promise.resolve(responseObject);
+    const registerResult = await fetch(
+      `${ClientEnviroment.API_URL}register/register`,
+      configurations
+    )
+      .then((res) => {
+        if (res.status <= 199 || res.status >= 300) {
+          return Promise.reject(res.json());
+        }
+        return res.json();
+      })
+      .then((response) => {
+        return Promise.resolve(response);
+      })
+      .catch((error) => {
+        return Promise.reject(error);
+      });
+
+    return Promise.resolve(registerResult as ServerResponseDto);
   }
 }

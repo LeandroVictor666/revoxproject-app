@@ -1,14 +1,8 @@
-//import { faker } from "@faker-js/faker";
 import InputValidationResponseEnums from "../../Types/InputValidationErrorObject.enum";
 import RegisterController from "./RegisterController";
-import RegisterAccountDto from "../../DTO/RegisterAccountDto";
-import InputValidationResponse from "../../Types/InputValidationResponse";
-//import ServerResponseDto from "../../DTO/ServerResponseDto";
-
-//const loremParagraphs = faker.lorem.paragraph(15);
+const registerController = new RegisterController();
 
 describe("test register controller username validation", () => {
-  const registerController = new RegisterController();
   it("should return a failed validation, errorCode: Min Characters.", () => {
     const validationResult = registerController.validateUsername("L");
     expect(validationResult.isValid).toBe(false);
@@ -19,7 +13,6 @@ describe("test register controller username validation", () => {
 });
 
 describe("test register controller email validation", () => {
-  const registerController = new RegisterController();
   it("should return a failed validation, errorCode: Invalid Email Input", () => {
     const validationResult = registerController.validateEmail(
       "leandrovictordev@invalidDigitcom"
@@ -41,7 +34,6 @@ describe("test register controller email validation", () => {
 });
 
 describe("test register controller password validation", () => {
-  const registerController = new RegisterController();
   it("should return a failed validation, errorCode: FailedMinUpperCase", () => {
     const validationResult =
       registerController.validatePassword("mysecretpassword");
@@ -62,35 +54,23 @@ describe("test register controller password validation", () => {
   });
 });
 
-describe("test register controller registerFunction", () => {
-  const registerController = new RegisterController();
-  it("should return a username validation error, errorCode: failed min length", async () => {
-    const accountData: RegisterAccountDto = new RegisterAccountDto(
-      "a",
-      "leandro-victor-666",
-      "leandrovictordev@gmail.com",
-      "MYSECRETPASSWORD666",
-      14,
-      "July",
-      2004
-    );
-    const expectedObject: InputValidationResponse = {
-      errorCode: InputValidationResponseEnums.FailedMinCharacters,
+describe("test register controller birthday validation", () => {
+  it("should return a birthday validation error, errorCode", () => {
+    const invalidDate = new Date();
+    const validationResult = registerController.validateBirthday(invalidDate);
+    expect(validationResult).toMatchObject({
+      errorCode: InputValidationResponseEnums.FailedMinYearDate,
       isValid: false,
       responseFrom: "client",
-    };
+    });
+  });
 
-    try {
-      await registerController
-        .registerUser(accountData)
-        .then((res) => {
-          return Promise.resolve(res);
-        })
-        .catch((error) => {
-          return Promise.reject(error);
-        });
-    } catch (err) {
-      expect(err).toMatchObject(expectedObject);
-    }
+  it("should return a b irthday validation success", () => {
+    const validDate = new Date(2004, 4, 14);
+    const validationResult = registerController.validateBirthday(validDate);
+    expect(validationResult).toMatchObject({
+      isValid: true,
+      errorCode: InputValidationResponseEnums.Success,
+    });
   });
 });
