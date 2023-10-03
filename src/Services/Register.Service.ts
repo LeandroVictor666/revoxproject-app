@@ -2,8 +2,7 @@ import * as EmailValidator from "email-validator";
 import * as AccountRules from "../Rules/AccountRules";
 import InputValidationErrorEnum from "../Types/InputValidationErrorObject.enum";
 import InputValidationResponse from "../Types/InputValidationResponse";
-import BirthdayObject from "../Types/InputBirthday";
-import MonthsEnum from "../Types/Months.enum";
+//import MonthsEnum from "../Types/Months.enum";
 
 export default class RegisterService {
   /**
@@ -186,7 +185,6 @@ export default class RegisterService {
       !passwordHaveDigits ||
       passwordHaveDigits.length < AccountRules.PASSWORD_MIN_DIGITS
     ) {
-      console.log(passwordHaveDigits?.length);
       return {
         isValid: false,
         errorCode: InputValidationErrorEnum.FailedMinDigits,
@@ -202,40 +200,46 @@ export default class RegisterService {
     };
   }
 
-  validateBirthday(birthday: BirthdayObject): InputValidationResponse {
-    if (birthday.day < AccountRules.BIRTHDAY_MIN_DAY) {
-      return {
-        isValid: false,
-        errorCode: InputValidationErrorEnum.FailedMinDay,
-        reason: `The user entered the day of birth incorrectly, min day: ${AccountRules.BIRTHDAY_MIN_DAY}`,
-        responseFrom: "client",
-      };
-    } else if (birthday.day > AccountRules.BIRTHDAY_MAX_DAY) {
+  validateBirthday(birthday: Date): InputValidationResponse {
+    const date18yAgo = new Date();
+    date18yAgo.setFullYear(date18yAgo.getFullYear() - 18);
+    const year = birthday.getFullYear();
+    const month = birthday.getMonth();
+    const day = birthday.getDate();
+
+    if (day > AccountRules.BIRTHDAY_MAX_DAY) {
       return {
         isValid: false,
         errorCode: InputValidationErrorEnum.FailedMaxDay,
         reason: `The user entered the day of birth incorrectly, max day: ${AccountRules.BIRTHDAY_MAX_DAY}`,
         responseFrom: "client",
       };
-    } else if (birthday.year > AccountRules.BIRTHDAY_MIN_YEAR) {
+    } else if (day < AccountRules.BIRTHDAY_MIN_DAY) {
       return {
         isValid: false,
-        errorCode: InputValidationErrorEnum.FailedMinYearDate,
-        reason: "The user is not over 18 years old.",
-        responseFrom: "client",
+        errorCode: InputValidationErrorEnum.FailedMinDay,
+        reason: "The user entered a invalid day.",
+        responseFrom: `client`,
       };
-    } else if (birthday.year > AccountRules.BIRTHDAY_ACTUAL_YEAR) {
+    } else if (year > AccountRules.BIRTHDAY_ACTUAL_YEAR) {
       return {
         isValid: false,
         errorCode: InputValidationErrorEnum.FailedMaxYearDate,
         reason: "The user entered a year greater than the current year.",
         responseFrom: "client",
       };
-    } else if (birthday.month in MonthsEnum === false) {
+    } else if (month > 12) {
+      return {
+        isValid: false,
+        errorCode: InputValidationErrorEnum.FailedInvalidMonth,
+        reason: "The user entered a invalid month.",
+        responseFrom: `client`,
+      };
+    } else if (birthday > date18yAgo) {
       return {
         isValid: false,
         errorCode: InputValidationErrorEnum.FailedMinYearDate,
-        reason: "The user did not enter a valid month.",
+        reason: "The user is not over 18 years old.",
         responseFrom: "client",
       };
     }
