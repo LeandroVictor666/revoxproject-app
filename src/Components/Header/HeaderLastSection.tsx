@@ -30,8 +30,7 @@ const HeaderLastSection = (): JSX.Element => {
     <div className={Styles.lastSectionAuthenticated}>
       <a href={`profile/${myAccount.id}`}>
         <img
-          src={`Assets/UsersPfp/user-${myAccount.id}.jpeg`}
-          srcSet={`../Assets/UsersPfp/user-${myAccount.id}.jpeg`}
+          src={`/Assets/UsersPfp/user-${myAccount.id}.jpeg`}
         ></img>
       </a>
       <HamburgMenu />
