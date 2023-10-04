@@ -1,4 +1,5 @@
 import Styles from "../../Styles/app.module.css";
+import HeaderLastSection from "./HeaderLastSection";
 
 const Header = (): JSX.Element => {
   return (
@@ -7,16 +8,7 @@ const Header = (): JSX.Element => {
         <div className={Styles.firstSection}>
           <p>RevoXProject</p>
         </div>
-        <div className={Styles.lastSection}>
-          <nav>
-            <a href="/login" id="login-btn">
-              Login
-            </a>
-            <a href="/register" style={{ marginLeft: "16px" }}>
-              Register
-            </a>
-          </nav>
-        </div>
+        <HeaderLastSection />
       </div>
     </header>
   );
