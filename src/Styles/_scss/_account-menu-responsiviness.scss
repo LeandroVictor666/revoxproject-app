@@ -1,0 +1,153 @@
+@media screen and (min-width: 1280px) {
+  .accountMenuContainer {
+    width: 25%;
+    height: max-content;
+    padding: 32px;
+    margin-left: 83.5%;
+    header {
+      .accountMenuPfp {
+        $pfpSize: 80px;
+        width: $pfpSize;
+        height: $pfpSize;
+        min-width: $pfpSize;
+        min-height: $pfpSize;
+        margin-right: 32px;
+      }
+      .miniAboutMe {
+        #headerUsername {
+          font-size: 16px;
+        }
+        #headerNickname {
+          font-size: 24px;
+        }
+      }
+    }
+    #headerLine {
+      margin-top: 32px;
+      width: 80%;
+    }
+
+    .myAccountBody {
+      margin-top: 16px;
+      width: 100%;
+      a {
+        .nodeSection {
+          $iconsBaseSize: 30px;
+          padding: 6px;
+          svg {
+            width: $iconsBaseSize;
+          }
+          p {
+            margin-left: 32px;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+    .blackLine {
+      width: 75%;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .accountMenuContainer {
+    width: 35%;
+    height: max-content;
+    padding: 32px;
+    header {
+      .accountMenuPfp {
+        $pfpSize: 80px;
+        width: $pfpSize;
+        height: $pfpSize;
+        min-width: $pfpSize;
+        min-height: $pfpSize;
+        margin-right: 32px;
+      }
+      .miniAboutMe {
+        #headerUsername {
+          font-size: 16px;
+        }
+        #headerNickname {
+          font-size: 24px;
+        }
+      }
+    }
+    #headerLine {
+      margin-top: 32px;
+      width: 80%;
+    }
+
+    .myAccountBody {
+      margin-top: 16px;
+      width: 100%;
+      a {
+        .nodeSection {
+          $iconsBaseSize: 30px;
+          padding: 6px;
+          svg {
+            width: $iconsBaseSize;
+          }
+          p {
+            margin-left: 32px;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+    .blackLine {
+      width: 75%;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .accountMenuContainer {
+    width: 50%;
+    height: max-content;
+    padding: 16px;
+    header {
+      .accountMenuPfp {
+        $pfpSize: 80px;
+        width: $pfpSize;
+        height: $pfpSize;
+        min-width: $pfpSize;
+        min-height: $pfpSize;
+        margin-right: 32px;
+      }
+      .miniAboutMe {
+        #headerUsername {
+          font-size: 16px;
+        }
+        #headerNickname {
+          font-size: 24px;
+        }
+      }
+    }
+    #headerLine {
+      margin-top: 32px;
+      width: 80%;
+    }
+
+    .myAccountBody {
+      margin-top: 16px;
+      width: 100%;
+      a {
+        .nodeSection {
+          $iconsBaseSize: 30px;
+          padding: 6px;
+          svg {
+            width: $iconsBaseSize;
+          }
+          p {
+            margin-left: 32px;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+    .blackLine {
+      width: 75%;
+    }
+  }
+}
