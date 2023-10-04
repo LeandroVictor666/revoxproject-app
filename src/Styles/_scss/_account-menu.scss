@@ -1,0 +1,113 @@
+$iconsBaseSize: 25px;
+
+.accountMenuContainer {
+  border-radius: 6px;
+  box-shadow: 12px 12px 6px 0px rgba(0, 0, 0, 0.582);
+  background: #434343;
+  width: max-content;
+  height: max-content;
+  align-items: center;
+  padding: 16px;
+  position: fixed;
+  display: flex;
+  right: 32px;
+  z-index: 9999;
+  flex-direction: column;
+  header {
+    display: flex;
+    align-items: center;
+    .accountMenuPfp {
+      $pfpSize: 50px;
+      width: $pfpSize;
+      height: $pfpSize;
+      min-width: $pfpSize;
+      min-height: $pfpSize;
+      object-fit: cover;
+      border-radius: 100%;
+      margin-right: 16px;
+    }
+    .miniAboutMe {
+      text-align: center;
+      #headerUsername {
+        color: #b4b4b4;
+        font-family: Open Sans;
+        font-size: 14px;
+        font-weight: 400;
+      }
+      #headerNickname {
+        font-family: Open Sans;
+        font-size: 20px;
+      }
+    }
+  }
+  #headerLine {
+    margin-top: 16px;
+    background: #5b5b5b;
+    width: 85%;
+  }
+
+  .myAccountBody {
+    margin-top: 16px;
+    width: 100%;
+    a {
+      text-decoration: none;
+      .nodeSection {
+        display: flex;
+        cursor: pointer;
+        border-radius: 8px;
+        align-items: center;
+        justify-self: center;
+        margin-top: 16px;
+
+        padding: 6px;
+        svg {
+          width: $iconsBaseSize;
+        }
+        p {
+          margin-left: 16px;
+          color: #f5f5f5;
+          text-align: center;
+          font-family: Open Sans;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+
+        //   Icons Styles
+        .chatDotIcon {
+          width: $iconsBaseSize + 4px;
+        }
+        .personArmsUpIcon {
+          width: $iconsBaseSize - 4px;
+        }
+      }
+      .nodeSection:hover {
+        background-color: rgb(19, 19, 19);
+        transform: scale(1.07);
+      }
+    }
+    a:focus {
+      outline: none;
+      .nodeSection {
+        background-color: rgb(19, 19, 19);
+        transform: scale(1.07);
+      }
+    }
+  }
+  .blackLine {
+    margin-top: 16px;
+    background-color: #1d1d1d;
+    width: 70%;
+  }
+
+  .myAccountLastSection {
+    a {
+      .nodeSection {
+        .logoutIcon {
+          width: $iconsBaseSize + 8px;
+        }
+      }
+    }
+  }
+}
