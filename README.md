@@ -60,63 +60,8 @@ Nesse projeto estou seguindo a arquitetura TDD e aplicando conceitos de Clean-Co
 
 # Status Do Projeto
 
-Atualmente, estou fazendo a responsividade do website, gosto de fazer projetos por etapas, fiz simulações de ambientes (server lento para enviar resposta da api, entre outras coisas), modal, erros, sucessos, antes de entrar na api do projeto, irei finalizar a responsividade, com o passar do desenvolvimento, irei liberar screenshots, meu plano para o design na verdade é refazer o css do projeto, começando com o conceito mobile-first (eu acho bem melhor, mais fácil e tranquilo para desenvolver dessa maneira, MUITO melhor adaptar coisas pequenas para grandes, do que grandes para pequenas.)
+# Status Do Projeto
 
----
+Atualmente estou trabalhando na renderização dos componentes caso o usuario esteja autenticado, estou começando pelo header, aqui esta um preview beta do que esta sendo desenvolvido (03/10/2023) :
 
-### Status (Responsividade)
-
-Homepage 🟢 <br>
-Register 🟢 <br>
-Login 🟢 <br>
-Header 🟢 <br>
-
----
-
-## Screenshots 📸
-
-### Homepage-View
-
-### 320px
-
-![mainpage_responsive](screenshots/screenshot_01.png?raw=true "Main Page Responsiviness")
-
-#### Iphone 6/7/8
-
-![mainpage_responsive](screenshots/mainpage_iphone_789.png?raw=true "Main Page Responsiviness In Iphone 6/7/8")
-
-### Nest Hub (Tablet)
-
-![mainpage_responsive](screenshots/mainpage_nest_hub.png?raw=true "Main Page Responsiviness In Nest Hub (Tablet)")
-
-### Nest Hub Max (Tablet Largo)
-
-![mainpage_responsive](screenshots/mainpage_nest_hub_max.png?raw=true "Main Page Responsiviness In Nest Hub (Tablet/Desktop)")
-
-### Desktop (1920x1080)
-
-![mainpage_responsive](screenshots/mainpage_desktop.png?raw=true "Main Page Responsiviness In Desktop (Desktop)")
-
----
-
-## Register-View
-
-### 320px
-
-![loginpage_responsive](screenshots/login_page_320px.png?raw=true "Login Page Responsiviness In Iphone 6/7/8")
-
-### Iphone 6/7/8
-
-![loginpage_responsive](screenshots/login_page_iphone678.png?raw=true "Login Page Responsiviness In Iphone 6/7/8")
-
-### Nest Hub (Tablet)
-
-![loginpage_responsive](screenshots/login_page_nest_hub.png?raw=true "Login Page Responsiviness In Nest Hub (Tablet)")
-
-### Nest Hub Max (Tablet Largo)
-
-![loginpage_responsive](screenshots/login_page_nest_hub_max.png?raw=true "Login Page Responsiviness In Nest Hub Max (Large Tablet)")
-
-### Desktop (1920x1080)
-
-![loginpage_responsive](screenshots/login_page_desktop.png?raw=true "Login Page Responsiviness In Nest Hub Max (Large Tablet)")
+![header_authenticated_preview](screenshots/preview.2023.10.03.png?raw=true "Login Page Responsiviness In Nest Hub Max (Large Tablet)")
