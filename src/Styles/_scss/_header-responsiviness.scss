@@ -15,3 +15,34 @@
     }
   }
 }
+
+@media screen and (min-width: 768px) {
+  .pageHeader {
+    .containerFixer {
+      .lastSectionAuthenticated {
+        $marginRightIcons: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          width: 35px;
+          height: 35px;
+          min-width: 35px;
+          min-height: 35px;
+          object-fit: cover;
+          border-radius: 100%;
+          margin-right: $marginRightIcons;
+        }
+        .hamburgMenu {
+          min-width: 25px;
+          min-height: 25px;
+          margin-right: $marginRightIcons;
+        }
+        .gearIcon {
+          min-width: 25px;
+          min-height: 25px;
+        }
+      }
+    }
+  }
+}
