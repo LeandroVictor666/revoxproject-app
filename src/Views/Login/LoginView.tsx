@@ -21,7 +21,7 @@ const LoginView = (): JSX.Element => {
   };
   const callToLoginFn = (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
-    LoginModule.ViewFunctions.callToRegisterFunction(
+    LoginModule.ViewFunctions.callToLoginFunction(
       { username, password },
       dispatcher
     );
