@@ -5,10 +5,13 @@ import * as LoginModule from "../../Modules/Login.Module";
 import InputEnums from "../../Types/InputEnums.enum";
 import InputValidationResponse from "../../Types/InputValidationResponse";
 import ResponseStatus from "../../Types/ServerErrors.enum";
+import * as clientEnviroment from "../../_ClientEnviroment/ClientEnviroment";
+import CacheService from "../../Services/Cache.Service";
 
 export default class LoginController {
   private loginService = new LoginModule.Service();
   private messegerService = new ErrorMessagerService();
+  private cacheService = new CacheService();
 
   validateUsername(username: string): InputValidationResponse {
     const validationResult = this.loginService.validateUsername(username);
@@ -49,7 +52,46 @@ export default class LoginController {
         )
       );
     }
-
+    const configurations: RequestInit = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: loginAccountDto.username,
+        password: loginAccountDto.password,
+      }),
+    };
+    let isToReject = false;
+    await fetch(
+      `${clientEnviroment.API_URL}authentication/login`,
+      configurations
+    )
+      .then((res) => {
+        if (res.status <= 199 || res.status >= 299) {
+          isToReject = true;
+        }
+        return res.json();
+      })
+      .then((response) => {
+        if (isToReject === true) {
+          const promiseResponse: ServerResponseDto = {
+            isError: true,
+            response: response.response,
+            responseFrom: response.responseFrom,
+            responseStatus: response.responseStatus,
+          };
+          return Promise.resolve(promiseResponse);
+        }
+        this.cacheService.saveDataInSessionStorage(
+          "jwt_token",
+          response.response
+        );
+        return Promise.resolve(response);
+      })
+      .catch((error) => {
+        return Promise.reject(error);
+      });
     const promiseObject: ServerResponseDto = {
       isError: false,
       response: `user: ${loginAccountDto.password}`,
