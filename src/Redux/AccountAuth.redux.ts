@@ -3,7 +3,14 @@ import AuthenticationProps from "../Types/AuthenticationProps";
 
 const initialState: AuthenticationProps = {
   isAuthenticated: false,
-  accountDataObject: null,
+  accountDataObject: {
+    id: 0,
+    username: "",
+    nickname: "",
+    email: "",
+    birthday: new Date(),
+  },
+  JWT: null,
 };
 interface actionProps {
   type: string;
@@ -17,6 +24,7 @@ const AccountAuthSlice = ReduxToolkit.createSlice({
     changeAuth(state, action: actionProps) {
       state.accountDataObject = action.payload.accountDataObject;
       state.isAuthenticated = action.payload.isAuthenticated;
+      state.JWT = action.payload.JWT;
     },
   },
 });
