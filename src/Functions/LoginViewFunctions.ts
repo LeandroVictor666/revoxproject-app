@@ -7,15 +7,29 @@ import ModalType from "../Types/ModalType.enum";
 
 import { ViewsEnum } from "../Types/Views.enum";
 import * as ReduxToolkit from "@reduxjs/toolkit";
+import ServerResponseDto from "../DTO/ServerResponseDto";
 
-export const callToRegisterFunction = async (
+export const callToLoginFunction = async (
   loginDto: LoginAccountDto,
   dispatch: ReduxToolkit.Dispatch<ReduxToolkit.AnyAction>
 ) => {
   const loginController = new LoginModule.Controller();
-  await loginController
-    .loginUser(loginDto)
-    .then(() => {
+  try {
+    await loginController.loginUser(loginDto).then((res) => {
+      console.log(`LoginRes: ${res}`);
+      const response = res as ServerResponseDto;
+      console.log(`LoginResponse: ${response}`);
+      if (response.isError === true) {
+        const payload: ModalProps = {
+          actualPage: ViewsEnum.LoginView,
+          message: response.response,
+          title: "Login Failed",
+          modalType: ModalType.Failure,
+          isActive: true,
+        };
+        dispatch(showModal(payload));
+        return;
+      }
       const payload: ModalProps = {
         actualPage: ViewsEnum.LoginView,
         message: "Logged In Successfully",
@@ -24,22 +38,8 @@ export const callToRegisterFunction = async (
         isActive: true,
       };
       dispatch(showModal(payload));
-    })
-    .catch((error) => {
-      let message;
-      if (error.responseFrom === "server") {
-        message = error.response;
-      } else {
-        message = error.reason;
-      }
-
-      const payload: ModalProps = {
-        actualPage: ViewsEnum.LoginView,
-        message: message,
-        modalType: ModalType.Failure,
-        title: "Login",
-        isActive: true,
-      };
-      dispatch(showModal(payload));
     });
+  } catch (error) {
+    console.log(`a error.. ${error}`);
+  }
 };
