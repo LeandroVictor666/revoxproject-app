@@ -22,4 +22,12 @@ export default class AccountService {
     }
     return `/Assets/UsersPfp/user-${this.accountData.id}.jpeg`;
   }
+
+  /**
+   * This method exists because: whenever the web application presents the username, it MUST contain an '@' at the beginning, also the username must be showed in lowercase. this is a convention
+   * @returns @string account username formated.
+   */
+  public getUsername(): string {
+    return `@${this.accountData.username.toLowerCase()}`;
+  }
 }
