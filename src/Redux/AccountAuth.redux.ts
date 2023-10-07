@@ -8,6 +8,7 @@ const initialState: AuthenticationProps = {
     username: "",
     nickname: "",
     email: "",
+    isPfpSet: false,
     birthday: new Date(),
   },
   JWT: null,
