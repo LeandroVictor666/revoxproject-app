@@ -1,3 +1,4 @@
+import MakePublicationComponent from "../../Components/MakePublication/MakePublication";
 import PublicationCard from "../../Components/PublicationCard/PublicationCard";
 import PublicationDto from "../../DTO/PublicationDto";
 import Styles from "../../Styles/app.module.css";
@@ -28,6 +29,7 @@ const HomePageView = (): JSX.Element => {
 
   return (
     <main className={Styles.homePageMain}>
+      <MakePublicationComponent></MakePublicationComponent>
       <div className={Styles.publicationsContainer}>
         <PublicationCard publicationDto={fakePublicationDto} />
         <PublicationCard publicationDto={fakePublicationDto2} />
