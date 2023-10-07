@@ -1,0 +1,72 @@
+.makePublicationContainer {
+  border: 1px solid #252525;
+  padding: 32px;
+  background: var(--publication-card-color, #383838);
+  width: 80%;
+  margin-bottom: 64px;
+  header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    img {
+      width: 80px;
+      border-radius: 100%;
+    }
+    p {
+      margin-top: 16px;
+    }
+  }
+  .makePublicationBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+    form {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      ::placeholder {
+        color: #111111;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-align: center;
+      }
+      textarea {
+        border-radius: 6px;
+        border: none;
+        background: #5a5a5a;
+        width: 90%;
+        resize: vertical;
+        display: flex;
+        text-align: center;
+        padding: 6px 16px;
+        font-size: 18px;
+      }
+
+      textarea:focus {
+        outline: none;
+      }
+      input[type="submit"] {
+        margin-top: 16px;
+        border: none;
+        outline: none;
+        border-radius: 6px;
+        background: #5a5a5a;
+        text-align: center;
+        min-width: 70%;
+        padding: 16px;
+        text-transform: capitalize;
+        color: #000000;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+}
