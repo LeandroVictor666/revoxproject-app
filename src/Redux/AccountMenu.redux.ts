@@ -2,7 +2,7 @@ import * as ReduxToolkit from "@reduxjs/toolkit";
 import AccountMenuProps from "../Types/AccountMenuProps";
 
 const initialState: AccountMenuProps = {
-  isActive: true,
+  isActive: false,
 };
 // interface actionProps {
 //   type: string;
@@ -13,14 +13,11 @@ const AccountMenuSlice = ReduxToolkit.createSlice({
   name: "AccountMenu",
   initialState: initialState,
   reducers: {
-    showAccountMenu(state) {
-      state.isActive = true;
-    },
-    hiddenAccountMenu(state) {
-      state.isActive = false;
+    fireAccountMenu(state) {
+      state.isActive = !state.isActive;
     },
   },
 });
 
-export const { showAccountMenu } = AccountMenuSlice.actions;
+export const { fireAccountMenu } = AccountMenuSlice.actions;
 export default AccountMenuSlice.reducer;
