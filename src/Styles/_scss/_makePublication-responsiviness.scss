@@ -1,0 +1,15 @@
+@media screen and (min-width: 1280px) {
+  .makePublicationContainer {
+    padding: 32px;
+    width: 30%;
+    margin-bottom: 64px;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .makePublicationContainer {
+    padding: 32px;
+    width: 50%;
+    margin-bottom: 64px;
+  }
+}
