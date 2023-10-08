@@ -11,9 +11,17 @@
     img {
       width: 80px;
       border-radius: 100%;
+      cursor: default;
+    }
+    img:hover {
+      transform: scale(1.1);
     }
     p {
       margin-top: 16px;
+      cursor: default;
+    }
+    p:hover {
+      transform: scale(1.04);
     }
   }
   .makePublicationBody {
@@ -42,15 +50,15 @@
         border: none;
         background: #5a5a5a;
         width: 90%;
-        resize: vertical;
+        resize: none;
         display: flex;
         text-align: center;
         padding: 6px 16px;
         font-size: 18px;
       }
-
       textarea:focus {
         outline: none;
+        transform: scale(105%);
       }
       input[type="submit"] {
         margin-top: 16px;
@@ -66,6 +74,11 @@
         text-align: center;
         font-size: 16px;
         font-weight: 500;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #7c7c7c;
+        transform: scale(1.03);
       }
     }
   }
