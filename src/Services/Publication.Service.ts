@@ -1,3 +1,5 @@
+import PublicationsDto from "../DTO/PublicationsDto";
+import * as ClientEnviroment from "../_ClientEnviroment/ClientEnviroment";
 export default class PublicationService {
   getDateDiff = (dateInMiliSeconds: number) => {
     const actualDate = new Date().getTime();
@@ -24,7 +26,6 @@ export default class PublicationService {
     }
   };
 
-
   changePfpToDefaultPfp = (authorId: number) => {
     const publications = document.getElementsByClassName(
       `publication-userid-${authorId}`
@@ -39,4 +40,24 @@ export default class PublicationService {
       }
     }
   };
+
+  async getPublications(lastPublicationId: number): Promise<PublicationsDto> {
+    let publicationsResponse: PublicationsDto = {
+      publications: [],
+      count: 0,
+    };
+    await fetch(
+      `${ClientEnviroment.API_URL}publication/get-publications?lastPublicationId=${lastPublicationId}`
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((response) => {
+        publicationsResponse = response;
+      })
+      .catch((error) => {
+        return Promise.reject(error);
+      });
+    return Promise.resolve(publicationsResponse);
+  }
 }
