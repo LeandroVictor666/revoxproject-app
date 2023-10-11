@@ -1,35 +1,33 @@
 export default class PublicationDto {
+  id: number;
   authorId: number;
-  publicationId: number;
   authorNickname: string;
   authorUsername: string;
   publicationDate: Date;
-  publicationContent: string;
-  publicationLikesCounter: number;
-  publicationCommentsCounter: number;
-  publicationSharesCounter: number;
+  content: string;
+  likesCounter: number;
+  commentsCounter: number;
+  sharesCounter: number;
 
   constructor(
     authorId: number,
-    publicationId: number,
+    id: number,
     authorNickname: string,
     authorUsername: string,
     publicationDate: Date,
-    publicationContent: string,
-    publicationLikesCounter: number,
-    publicationCommentsCounter: number,
-    publicationSharesCounter: number
+    content: string,
+    likesCounter: number,
+    commentsCounter: number,
+    sharesCounter: number
   ) {
     this.authorId = authorId;
-    this.publicationId = publicationId;
+    this.id = id;
     this.authorNickname = authorNickname;
     this.authorUsername = authorUsername;
     this.publicationDate = publicationDate;
-    this.publicationContent = publicationContent;
-    this.publicationLikesCounter = publicationLikesCounter;
-    this.publicationCommentsCounter = publicationCommentsCounter;
-    this.publicationSharesCounter = publicationSharesCounter;
+    this.content = content;
+    this.likesCounter = likesCounter;
+    this.commentsCounter = commentsCounter;
+    this.sharesCounter = sharesCounter;
   }
-
-  
 }
