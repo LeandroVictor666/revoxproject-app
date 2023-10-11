@@ -13,12 +13,10 @@ const PublicationCard = ({
   const imageProps: PublicationPfpData = {
     src: `Assets/UsersPfp/user-${publicationDto.authorId}.jpeg`,
     className: `publication-userid-${publicationDto.authorId}`,
-    id: `publication-id-${publicationDto.publicationId}`,
+    id: `publication-id-${publicationDto.id}`,
     alreadysanitized: "no",
   };
-
   const publicationService = new PublicationService();
-
   return (
     <div className={Styles.publicationCard}>
       <header>
@@ -32,27 +30,28 @@ const PublicationCard = ({
           <p className={Styles.authorUsername}>
             @{publicationDto.authorUsername}
           </p>
+          {/* I Will fix this later.
           <p className={Styles.publicationDate}>
             {publicationService.getDateDiff(
               publicationDto.publicationDate.getTime()
             )}
-          </p>
+          </p> */}
         </div>
       </header>
       <div className={Styles.lineContainerFixer}>
         <div className={Styles.horizontalLine}></div>
       </div>
       <main>
-        <p>{publicationDto.publicationContent}</p>
+        <p>{publicationDto.content}</p>
       </main>
       <div className={Styles.lineContainerFixer}>
         <PublicationOrn />
       </div>
       {/* i will use this later. */}
       <div className={Styles.publicationStatistic} style={{ display: "none" }}>
-        <p>Likes: {publicationDto.publicationLikesCounter}</p>
-        <p>Comments: {publicationDto.publicationCommentsCounter}</p>
-        <p>Shares: {publicationDto.publicationSharesCounter}</p>
+        <p>Likes: {publicationDto.likesCounter}</p>
+        <p>Comments: {publicationDto.commentsCounter}</p>
+        <p>Shares: {publicationDto.sharesCounter}</p>
       </div>
       <footer className={Styles.publicationFooter}>
         <div className={Styles.publicationControl} id="like-publication">
