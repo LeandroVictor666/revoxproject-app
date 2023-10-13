@@ -1,6 +1,5 @@
 import PublicationsDto from "../../DTO/PublicationsDto";
 import PublicationService from "../../Services/Publication.Service";
-
 export default class PublicationController {
   private publicationService: PublicationService;
   private lastPublicationFetch: Date;
@@ -29,6 +28,14 @@ export default class PublicationController {
       return publications;
     } catch (error) {
       return { count: 0, publications: [] };
+    }
+  }
+  async publish(content: string, userJwt: string) {
+    try {
+      await this.publicationService.publish(content, userJwt);
+      return Promise.resolve();
+    } catch (err) {
+      return Promise.reject();
     }
   }
 }
