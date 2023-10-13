@@ -10,7 +10,7 @@ describe("test login controller functions", () => {
       await loginController
         .loginUser(accountDto)
         .then((res) => {
-          console.log(`RESPONSE: ${res}`);
+          
         })
         .catch((error) => {
           return Promise.reject(error);
@@ -28,7 +28,7 @@ describe("test login controller functions", () => {
       await loginController
         .loginUser(accountDto)
         .then((res) => {
-          console.log(`RESPONSE: ${res}`);
+          
         })
         .catch((error) => {
           return Promise.reject(error);

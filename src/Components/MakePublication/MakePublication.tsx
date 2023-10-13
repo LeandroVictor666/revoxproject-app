@@ -7,7 +7,6 @@ const MakePublicationComponent = (): JSX.Element => {
   const accountService = new AccountService(account.accountDataObject);
   if (account.isAuthenticated === false) return <></>;
 
-  console.log(`NamE: ${account.accountDataObject}`);
   return (
     <div className={Styles.makePublicationContainer}>
       <header className={Styles.makePublicationHeader}>

@@ -6,7 +6,7 @@ import HorizontalLine from "../../Components/HorizontalLine/HorizontalLine";
 
 const ProfileView = (): JSX.Element => {
   const { profileId } = useParams();
-  console.log(typeof profileId);
+
   const fakeProfileRetrievedByApi: ProfileDto = {
     id: 0,
     username: "leandro-victor-666",

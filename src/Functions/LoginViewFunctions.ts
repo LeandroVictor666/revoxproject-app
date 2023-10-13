@@ -16,9 +16,9 @@ export const callToLoginFunction = async (
   const loginController = new LoginModule.Controller();
   try {
     await loginController.loginUser(loginDto).then((res) => {
-      console.log(`LoginRes: ${res}`);
+      
       const response = res as ServerResponseDto;
-      console.log(`LoginResponse: ${response}`);
+      
       if (response.isError === true) {
         const payload: ModalProps = {
           actualPage: ViewsEnum.LoginView,
@@ -40,6 +40,6 @@ export const callToLoginFunction = async (
       dispatch(showModal(payload));
     });
   } catch (error) {
-    console.log(`a error.. ${error}`);
+    
   }
 };

@@ -17,7 +17,7 @@ const appMiddleware: ReduxToolkit.Middleware =
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   (store) => (next) => (action) => {
     //add this to run 'npm run build'
-    //console.log(store);
+    //
 
     switch (action.type) {
       case "modal/showModal": {
