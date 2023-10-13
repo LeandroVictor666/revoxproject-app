@@ -60,4 +60,30 @@ export default class PublicationService {
       });
     return Promise.resolve(publicationsResponse);
   }
+
+  async publish(content: string, authorizationToken: string) {
+    const httpConfigurations: RequestInit = {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${authorizationToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        content: content,
+      }),
+    };
+    await fetch(
+      `${ClientEnviroment.API_URL}publication/fire-publication`,
+      httpConfigurations
+    )
+      .then((response) => {
+        if (response.status < 200 || response.status > 299) {
+          return Promise.reject();
+        }
+        return Promise.resolve();
+      })
+      .catch(() => {
+        return Promise.reject();
+      });
+  }
 }
