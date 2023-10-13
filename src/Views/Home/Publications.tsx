@@ -36,11 +36,7 @@ const PublicationsComponent = (): JSX.Element => {
           };
           newPublications.publications.push(...response.publications);
           setPublications(newPublications);
-          setLastPublicationsId(
-            newPublications.publications[
-              newPublications.publications.length - 1
-            ].id
-          );
+          setLastPublicationsId(newPublications.publications[0].id);
         });
     }
   };
@@ -50,9 +46,7 @@ const PublicationsComponent = (): JSX.Element => {
     publicationController.fetchPublications(0).then((response) => {
       setPublications(response);
       setAlreadyFirstLoad(true);
-      setLastPublicationsId(
-        response.publications[response.publications.length - 1].id
-      );
+      setLastPublicationsId(response.publications[0].id);
     });
   }
   if (publications.count !== 0 && publications.publications != null) {
